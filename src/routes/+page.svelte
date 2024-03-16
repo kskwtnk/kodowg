@@ -1,2 +1,42 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<svelte:head>
+	<title>Kodowg</title>
+</svelte:head>
+
+<div class="mx-auto grid max-w-screen-lg grid-cols-1 gap-y-6 px-4 py-8">
+	<h1 class="text-5xl font-bold">Kodowg</h1>
+	<div>
+		<p>Kodowg is a word inspired by the Japanese term "小道具" (which means "prop").</p>
+		<p>
+			Just like a prop helps set the scene, we're here to offer you nifty tools for those little
+			tasks in life.
+		</p>
+	</div>
+	<a href="/roulette" class="text-indigo-600">
+		<svg width="24" height="24" viewBox="0 0 24 24" class="inline">
+			<path
+				fill="currentColor"
+				d="M16.3174 18.0565L13.3685 15.1076L15.1044 13.3859L18.0424 16.2815V15.1554C18.0424 14.8156 18.1618 14.5286 18.4005 14.2946C18.6393 14.0605 18.9286 13.9435 19.2685 13.9435C19.6083 13.9435 19.8953 14.0605 20.1294 14.2946C20.3634 14.5286 20.4804 14.8156 20.4804 15.1554V19.1555C20.4804 19.5236 20.3516 19.8364 20.094 20.094C19.8364 20.3516 19.5236 20.4805 19.1555 20.4805H15.1272C14.7873 20.4805 14.5004 20.3634 14.2663 20.1294C14.0322 19.8953 13.9152 19.6083 13.9152 19.2685C13.9152 18.9286 14.0322 18.6417 14.2663 18.4076C14.5004 18.1736 14.7873 18.0565 15.1272 18.0565H16.3174ZM18.0424 7.6685L5.58695 20.1239C5.35652 20.3544 5.07137 20.4719 4.7315 20.4766C4.39165 20.4814 4.10651 20.3638 3.87607 20.1239C3.64562 19.8935 3.53276 19.6083 3.53747 19.2685C3.54219 18.9286 3.65977 18.6435 3.8902 18.413L16.3174 5.9576H15.1272C14.7873 5.9576 14.5004 5.83822 14.2663 5.59945C14.0322 5.36068 13.9152 5.07137 13.9152 4.7315C13.9152 4.39165 14.0346 4.10469 14.2734 3.87063C14.5121 3.63658 14.8014 3.51955 15.1413 3.51955H19.1555C19.5236 3.51955 19.8364 3.64835 20.094 3.90595C20.3516 4.16357 20.4804 4.47643 20.4804 4.84455V8.8587C20.4804 9.19855 20.3634 9.48551 20.1294 9.71958C19.8953 9.95363 19.6083 10.0706 19.2685 10.0706C18.9286 10.0706 18.6393 9.95127 18.4005 9.7125C18.1618 9.47373 18.0424 9.18442 18.0424 8.84455V7.6685ZM8.97717 10.6739L4.19022 5.89783C3.95977 5.66739 3.84455 5.38696 3.84455 5.05652C3.84455 4.72609 3.95977 4.44094 4.19022 4.20108C4.42066 3.96123 4.69928 3.8413 5.0261 3.8413C5.3529 3.8413 5.63986 3.95652 5.88698 4.18695L10.7022 8.96302L8.97717 10.6739Z"
+			/>
+		</svg>
+		<span class="underline underline-offset-2">Roulette</span>
+	</a>
+	<div class="grid gap-y-4 rounded-md bg-slate-200 p-6">
+		<p>This site has been tested for operation in the following environments:</p>
+		<ul class="list-disc pl-5">
+			<li>
+				OS
+				<ul class="list-circle pl-5">
+					<li>macOS</li>
+				</ul>
+			</li>
+			<li>
+				Browser
+				<ul class="list-circle pl-5">
+					<li>Google Chrome</li>
+					<li>Firefox</li>
+					<li>Safari</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>

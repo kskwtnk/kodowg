@@ -79,4 +79,5 @@
 			>
 		</div>
 	</div>
+	<a href="/" class="text-slate-600 underline underline-offset-2">Return to Top page</a>
 </div>

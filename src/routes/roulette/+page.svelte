@@ -37,6 +37,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Kodowg - Roulette</title>
+</svelte:head>
+
 <div
 	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 md:grid-cols-5 lg:gap-x-8"
 >
@@ -48,7 +52,7 @@
 				It will be displayed when you press the start button
 			</span>
 		</div>
-		<div class="grid min-h-24 rounded-md bg-slate-200 p-4">
+		<div id="result-display" class="grid min-h-24 rounded-md bg-slate-200 p-4">
 			<p class="self-center text-center font-bold">
 				{#if selectedItem}
 					<span class="text-6xl md:text-8xl">{selectedItem}</span>

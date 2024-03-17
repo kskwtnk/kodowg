@@ -14,6 +14,7 @@
 
 <svelte:head>
 	<title>Kodowg - Character Count</title>
+	<meta property="og:title" content="Kodowg - Character Count" />
 </svelte:head>
 
 <div

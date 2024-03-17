@@ -39,6 +39,7 @@
 
 <svelte:head>
 	<title>Kodowg - Roulette</title>
+	<meta property="og:title" content="Kodowg - Roulette" />
 </svelte:head>
 
 <div

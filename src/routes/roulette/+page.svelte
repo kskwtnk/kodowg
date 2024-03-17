@@ -72,7 +72,7 @@
 				id="textarea"
 				rows="10"
 				placeholder="Item name"
-				class="rounded-md p-2"
+				class="rounded-md px-3 py-2"
 				bind:value={inputText}
 				on:input={adjustHeight}
 			/>
@@ -83,5 +83,7 @@
 			>
 		</div>
 	</div>
-	<a href="/" class="text-slate-600 underline underline-offset-2">Return to Top page</a>
+	<a href="/" class="text-slate-600 underline underline-offset-2 md:col-span-2"
+		>Return to Top page</a
+	>
 </div>

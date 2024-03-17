@@ -63,16 +63,16 @@
 		</div>
 	</div>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
-		<label for="item" class="grid content-start gap-y-1">
+		<label for="textarea" class="grid content-start gap-y-1">
 			<span class="text-2xl font-bold">Item list</span>
-			<span class="leading-tight text-slate-600">Please enter with line separation</span>
+			<span class="leading-tight text-slate-600">(Please enter with line separation)</span>
 		</label>
 		<div class="grid gap-y-5">
 			<textarea
-				id="item"
+				id="textarea"
 				rows="10"
 				placeholder="Item name"
-				class="rounded-md p-2"
+				class="rounded-md px-3 py-2"
 				bind:value={inputText}
 				on:input={adjustHeight}
 			/>
@@ -83,5 +83,7 @@
 			>
 		</div>
 	</div>
-	<a href="/" class="text-slate-600 underline underline-offset-2">Return to Top page</a>
+	<a href="/" class="text-slate-600 underline underline-offset-2 md:col-span-2"
+		>Return to Top page</a
+	>
 </div>

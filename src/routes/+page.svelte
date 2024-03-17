@@ -1,15 +1,13 @@
 <svelte:head>
 	<title>Kodowg</title>
+	<meta property="og:title" content="Kodowg" />
 </svelte:head>
 
 <div class="mx-auto grid max-w-screen-lg grid-cols-1 gap-y-6 px-4 py-8">
 	<h1 class="text-5xl font-bold">Kodowg</h1>
 	<div>
-		<p>Kodowg is a word inspired by the Japanese term "小道具" (which means "prop").</p>
-		<p>
-			Just like a prop helps set the scene, we're here to offer you nifty tools for those little
-			tasks in life.
-		</p>
+		<p>Kodowg is a word inspired by the Japanese term “小道具” (which means “props”).</p>
+		<p>We offer you nifty tools for those little tasks in life.</p>
 	</div>
 	<div class="flex gap-x-6">
 		<a href="/roulette" class="text-indigo-600">

@@ -12,6 +12,10 @@
 	$: formattedLengthWithoutNewlines = new Intl.NumberFormat('en-US').format(lengthWithoutNewlines);
 </script>
 
+<svelte:head>
+	<title>Kodowg - Character Count</title>
+</svelte:head>
+
 <div
 	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 md:grid-cols-5 lg:gap-x-8"
 >

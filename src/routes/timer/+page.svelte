@@ -65,6 +65,12 @@
 	onDestroy(() => {
 		clearInterval(countdownTimerId);
 	});
+
+	// Get user agent.
+	let userAgent = navigator.userAgent;
+
+	// Determine whether Safari.
+	let isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
 </script>
 
 <svelte:head>
@@ -147,6 +153,12 @@
 			>
 		</div>
 	</div>
+	{#if isSafari}
+		<p>
+			Note: In Safari, we have confirmed that the display position is misaligned when a numerical
+			value is entered into the input element.
+		</p>
+	{/if}
 	<div>
 		<a href="/" class="text-slate-600 underline underline-offset-2">Return to Top page</a>
 	</div>
@@ -154,7 +166,7 @@
 
 <style lang="postcss">
 	.input {
-		@apply [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;
+		@apply max-w-32 [appearance:textfield] sm:max-w-44 md:max-w-56 lg:max-w-64 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;
 	}
 	.number {
 		@apply aspect-square h-24 bg-inherit text-center text-8xl tabular-nums sm:h-32 sm:text-9xl md:h-40 md:text-[10rem] lg:h-48 lg:text-[12rem];

@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let data;
+	const { lang, i18nText } = data;
 	let inputText = '';
 	let items: string[] = [];
 	let selectedItem = '';
@@ -38,19 +40,19 @@
 </script>
 
 <svelte:head>
-	<title>Kodowg - Roulette</title>
-	<meta property="og:title" content="Kodowg - Roulette" />
+	<title>Kodowg - {i18nText.title}</title>
+	<meta property="og:title" content="Kodowg - {i18nText.title}" />
 </svelte:head>
 
 <div
 	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 md:grid-cols-5 lg:gap-x-8"
 >
-	<h1 class="col-span-full text-5xl font-bold">Roulette</h1>
+	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
 		<div class="grid content-start gap-y-1">
-			<h2 class="text-2xl font-bold">Result</h2>
+			<h2 class="text-2xl font-bold">{i18nText.result}</h2>
 			<span class="leading-tight text-slate-600">
-				It will be displayed when you press the start button
+				{i18nText.resultDescription}
 			</span>
 		</div>
 		<div id="result-display" class="grid min-h-24 rounded-md bg-slate-200 p-4">
@@ -58,21 +60,21 @@
 				{#if selectedItem}
 					<span class="text-6xl md:text-8xl">{selectedItem}</span>
 				{:else}
-					<span class="text-3xl text-slate-500 md:text-4xl">The chosen one is...</span>
+					<span class="text-3xl text-slate-500 md:text-4xl">{i18nText.chosen}</span>
 				{/if}
 			</p>
 		</div>
 	</div>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
 		<label for="textarea" class="grid content-start gap-y-1">
-			<span class="text-2xl font-bold">Item list</span>
-			<span class="leading-tight text-slate-600">(Please enter with line separation)</span>
+			<span class="text-2xl font-bold">{i18nText.itemList}</span>
+			<span class="leading-tight text-slate-600">{i18nText.itemListDescription}</span>
 		</label>
 		<div class="grid gap-y-5">
 			<textarea
 				id="textarea"
 				rows="10"
-				placeholder="Item name"
+				placeholder={i18nText.placeholder}
 				class="rounded-md px-3 py-2"
 				bind:value={inputText}
 				on:input={adjustHeight}
@@ -80,11 +82,13 @@
 			<button
 				disabled={isSpinning}
 				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-				on:click={startRoulette}>Start</button
+				on:click={startRoulette}
 			>
+				{i18nText.start}
+			</button>
 		</div>
 	</div>
-	<a href="/" class="text-slate-600 underline underline-offset-2 md:col-span-2"
-		>Return to Top page</a
-	>
+	<a href="/{lang}" class="text-slate-600 underline underline-offset-2 md:col-span-2">
+		{i18nText.returnToTop}
+	</a>
 </div>

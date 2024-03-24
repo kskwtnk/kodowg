@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let data;
+	const { lang, i18nText } = data;
 	import { onDestroy } from 'svelte';
 
 	// Define the possible states of the timer.
@@ -77,12 +79,12 @@
 </script>
 
 <svelte:head>
-	<title>Kodowg - Timer</title>
-	<meta property="og:title" content="Kodowg - Timer" />
+	<title>Kodowg - {i18nText.title}</title>
+	<meta property="og:title" content="Kodowg - {i18nText.title}" />
 </svelte:head>
 
 <div class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 lg:gap-x-8">
-	<h1 class="text-5xl font-bold">Timer</h1>
+	<h1 class="text-5xl font-bold">{i18nText.title}</h1>
 	<div
 		id="result-display"
 		class="flex content-center justify-center gap-x-12 rounded-md bg-slate-200 py-4 sm:gap-x-16 sm:py-8 md:gap-x-20 md:py-12 lg:gap-x-24 lg:py-16"
@@ -98,7 +100,7 @@
 					class="number input"
 					bind:value={minutes}
 				/>
-				<label for="minutes" class="label">min</label>
+				<label for="minutes" class="label">{i18nText.minutes}</label>
 			</div>
 			<div class="grid place-items-center">
 				<input
@@ -110,20 +112,20 @@
 					class="number input"
 					bind:value={seconds}
 				/>
-				<label for="seconds" class="label">sec</label>
+				<label for="seconds" class="label">{i18nText.seconds}</label>
 			</div>
 		{:else}
 			<div class="grid place-items-center">
 				<span role="timer" aria-label="min" class="number">
 					{displayMinutes}
 				</span>
-				<span class="label">min</span>
+				<span class="label">{i18nText.minutes}</span>
 			</div>
 			<div class="grid place-items-center">
 				<span role="timer" aria-label="sec" class="number">
 					{displaySeconds}
 				</span>
-				<span class="label">sec</span>
+				<span class="label">{i18nText.seconds}</span>
 			</div>
 		{/if}
 	</div>
@@ -132,32 +134,32 @@
 			{#if timerState === 'ready'}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					on:click={startTimer}>Start</button
+					on:click={startTimer}>{i18nText.start}</button
 				>
 			{/if}
 
 			{#if timerState === 'running'}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					on:click={pauseTimer}>Pause</button
+					on:click={pauseTimer}>{i18nText.pause}</button
 				>
 			{/if}
 
 			{#if timerState === 'paused'}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					on:click={countdown}>Resume</button
+					on:click={countdown}>{i18nText.resume}</button
 				>
 			{/if}
 			<button
 				disabled={timerState === 'ready'}
 				class="rounded-md border border-slate-500 bg-slate-100 p-2 text-2xl font-bold text-slate-600 hover:bg-slate-200 hover:text-slate-800 disabled:border-slate-300 disabled:bg-slate-200 disabled:text-slate-400"
-				on:click={cancelTimer}>Cancel</button
+				on:click={cancelTimer}>{i18nText.cancel}</button
 			>
 		</div>
 	</div>
 	<div>
-		<a href="/" class="text-slate-600 underline underline-offset-2">Return to Top page</a>
+		<a href="/{lang}" class="text-slate-600 underline underline-offset-2">{i18nText.returnToTop}</a>
 	</div>
 </div>
 

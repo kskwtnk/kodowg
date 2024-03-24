@@ -1,17 +1,14 @@
 <script>
-	import '../app.css';
+	import '../../app.css';
 	import { page } from '$app/stores';
+
+	export let data;
+	const { i18nText } = data;
 </script>
 
 <svelte:head>
-	<meta
-		name="description"
-		content="Kodowg is a word inspired by the Japanese term “小道具” (which means “props”). We offer you nifty tools for those little tasks in life."
-	/>
-	<meta
-		property="og:description"
-		content="Kodowg is a word inspired by the Japanese term “小道具” (which means “props”). We offer you nifty tools for those little tasks in life."
-	/>
+	<meta name="description" content={i18nText.description} />
+	<meta property="og:description" content={i18nText.description} />
 	<meta property="og:url" content={$page.url.href} />
 	<meta property="og:image" content={`${$page.url.origin}/og-image.jpg`} />
 	<meta property="og:type" content="website" />

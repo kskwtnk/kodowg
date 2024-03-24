@@ -1,4 +1,6 @@
 <script lang="ts">
+	export let data;
+	const { lang, i18nText } = data;
 	let text = '';
 
 	// Using `String.prototype.length` will increase the count of surrogate pair characters, so use `Intl.Segmenter` instead.
@@ -13,31 +15,31 @@
 </script>
 
 <svelte:head>
-	<title>Kodowg - Character Count</title>
-	<meta property="og:title" content="Kodowg - Character Count" />
+	<title>Kodowg - {i18nText.title}</title>
+	<meta property="og:title" content="Kodowg - {i18nText.title}" />
 </svelte:head>
 
 <div
 	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 md:grid-cols-5 lg:gap-x-8"
 >
-	<h1 class="col-span-full text-5xl font-bold">Character Count</h1>
+	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
-		<h2 class="text-2xl font-bold">Characters</h2>
+		<h2 class="text-2xl font-bold">{i18nText.characters}</h2>
 		<div id="result-display" class="grid min-h-24 place-content-center rounded-md bg-slate-200 p-4">
 			<span class="text-6xl font-bold md:text-7xl">{formattedLengthWithoutNewlines}</span>
 		</div>
 	</div>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
-		<label for="textarea" class="text-2xl font-bold">Text to count</label>
+		<label for="textarea" class="text-2xl font-bold">{i18nText.textToCount}</label>
 		<textarea
 			id="textarea"
 			rows="12"
-			placeholder="Your text"
+			placeholder={i18nText.placeholder}
 			class="rounded-md px-3 py-2"
 			bind:value={text}
 		/>
 	</div>
-	<a href="/" class="text-slate-600 underline underline-offset-2 md:col-span-2"
-		>Return to Top page</a
-	>
+	<a href="/{lang}" class="text-slate-600 underline underline-offset-2 md:col-span-2">
+		{i18nText.returnToTop}
+	</a>
 </div>

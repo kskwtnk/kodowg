@@ -1,16 +1,16 @@
 <script lang="ts">
 	export let data;
 	const { lang, i18nText } = data;
-	let inputText = '';
+	let inputText = "";
 	let items: string[] = [];
-	let selectedItem = '';
+	let selectedItem = "";
 	let isSpinning = false;
 
 	function startRoulette() {
-		if (inputText.trim() === '') return;
+		if (inputText.trim() === "") return;
 
-		items = inputText.split('\n').filter((line) => line.trim() !== '');
-		selectedItem = selectedItem ? selectedItem : '';
+		items = inputText.split("\n").filter((line) => line.trim() !== "");
+		selectedItem = selectedItem ? selectedItem : "";
 		isSpinning = true;
 
 		let spinCount = Math.floor(Math.random() * 10) + 20;
@@ -31,11 +31,11 @@
 	function adjustHeight(
 		event: Event & {
 			currentTarget: EventTarget & HTMLTextAreaElement;
-		}
+		},
 	) {
 		const textarea = event.currentTarget;
-		textarea.style.height = 'auto';
-		textarea.style.height = textarea.scrollHeight + 'px';
+		textarea.style.height = "auto";
+		textarea.style.height = textarea.scrollHeight + "px";
 	}
 </script>
 
@@ -60,7 +60,9 @@
 				{#if selectedItem}
 					<span class="text-6xl md:text-8xl">{selectedItem}</span>
 				{:else}
-					<span class="text-3xl text-slate-500 md:text-4xl">{i18nText.chosen}</span>
+					<span class="text-3xl text-slate-500 md:text-4xl"
+						>{i18nText.chosen}</span
+					>
 				{/if}
 			</p>
 		</div>
@@ -68,7 +70,9 @@
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
 		<label for="textarea" class="grid content-start gap-y-1">
 			<span class="text-2xl font-bold">{i18nText.itemList}</span>
-			<span class="leading-tight text-slate-600">{i18nText.itemListDescription}</span>
+			<span class="leading-tight text-slate-600"
+				>{i18nText.itemListDescription}</span
+			>
 		</label>
 		<div class="grid gap-y-5">
 			<textarea
@@ -88,7 +92,10 @@
 			</button>
 		</div>
 	</div>
-	<a href="/{lang}" class="text-slate-600 underline underline-offset-2 md:col-span-2">
+	<a
+		href="/{lang}"
+		class="text-slate-600 underline underline-offset-2 md:col-span-2"
+	>
 		{i18nText.returnToTop}
 	</a>
 </div>

@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
 	await page.goto('/roulette');
 });
 
-test('Verify link navigates to the correct URL', async ({ page }) => {
+test('Transition to the top page', async ({ page }) => {
 	await page.getByRole('link', { name: 'Return to Top page' }).click();
 	await page.waitForURL('**/');
 	const h1Text = await page.locator('h1').textContent();
@@ -20,13 +20,13 @@ test('Roulette functionality with item input', async ({ page }) => {
 	expect(result).toMatch(/Item 1|Item 2|Item 3/);
 });
 
-test('No action is taken if input is empty and the "Start" button is clicked', async ({ page }) => {
+test('No action is taken if input is empty and the Start button is clicked', async ({ page }) => {
 	await page.getByRole('button', { name: 'Start' }).click();
 	const result = await page.locator('#result-display').textContent();
 	expect(result).toBe('The chosen one is...');
 });
 
-test('The "Start" button is disabled while the roulette is spinning', async ({ page }) => {
+test('The start button is disabled while the roulette is spinning', async ({ page }) => {
 	await page.fill('#textarea', 'Item 1\nItem 2\nItem 3');
 	const button = page.getByRole('button', { name: 'Start' });
 	await button.click();

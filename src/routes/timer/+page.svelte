@@ -8,6 +8,7 @@
 	let minutes: number;
 	let seconds: number;
 	let max: number = 59;
+	let min: number = 0;
 	let totalSeconds: number = 0;
 	let initialSeconds: number = 0;
 	let displayMinutes: number;
@@ -23,11 +24,19 @@
 		seconds = max;
 	}
 
+	// Ensure minutes and seconds don't exceed the minimum allowed value.
+	$: if (minutes < min) {
+		minutes = min;
+	}
+	$: if (seconds < min) {
+		seconds = min;
+	}
+
 	// Calculate total seconds whenever minutes or seconds input changes.
 	$: totalSeconds = (minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
 
 	// Stop the timer and reset the state if totalSeconds is 0 or less.
-	$: if (totalSeconds <= 0) {
+	$: if (totalSeconds < 0) {
 		clearInterval(countdownTimerId);
 		timerState = 'ready';
 	}
@@ -44,7 +53,7 @@
 	}
 
 	function startTimer() {
-		if (totalSeconds <= 0) {
+		if (totalSeconds < 0) {
 			initialSeconds = (minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
 			totalSeconds = initialSeconds;
 		}
@@ -65,12 +74,6 @@
 	onDestroy(() => {
 		clearInterval(countdownTimerId);
 	});
-
-	// Get user agent.
-	let userAgent = navigator.userAgent;
-
-	// Determine whether Safari.
-	let isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
 </script>
 
 <svelte:head>
@@ -90,7 +93,7 @@
 					type="number"
 					id="minutes"
 					placeholder="0"
-					min="0"
+					{min}
 					{max}
 					class="number input"
 					bind:value={minutes}
@@ -102,7 +105,7 @@
 					type="number"
 					id="seconds"
 					placeholder="0"
-					min="0"
+					{min}
 					{max}
 					class="number input"
 					bind:value={seconds}
@@ -111,13 +114,13 @@
 			</div>
 		{:else}
 			<div class="grid place-items-center">
-				<span class="number">
+				<span role="timer" aria-label="min" class="number">
 					{displayMinutes}
 				</span>
 				<span class="label">min</span>
 			</div>
 			<div class="grid place-items-center">
-				<span class="number">
+				<span role="timer" aria-label="sec" class="number">
 					{displaySeconds}
 				</span>
 				<span class="label">sec</span>
@@ -153,12 +156,6 @@
 			>
 		</div>
 	</div>
-	{#if isSafari}
-		<p>
-			Note: In Safari, we have confirmed that the display position is misaligned when a numerical
-			value is entered into the input element.
-		</p>
-	{/if}
 	<div>
 		<a href="/" class="text-slate-600 underline underline-offset-2">Return to Top page</a>
 	</div>

@@ -1,17 +1,19 @@
 <script lang="ts">
 	export let data;
 	const { lang, i18nText } = data;
-	let text = '';
+	let text = "";
 
 	// Using `String.prototype.length` will increase the count of surrogate pair characters, so use `Intl.Segmenter` instead.
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
-	let segmenter = new Intl.Segmenter('en', { granularity: 'grapheme' });
+	let segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
 
-	$: lengthWithoutNewlines = text.includes('\n')
-		? [...segmenter.segment(text.replace(/\n/g, ''))].length
+	$: lengthWithoutNewlines = text.includes("\n")
+		? [...segmenter.segment(text.replace(/\n/g, ""))].length
 		: [...segmenter.segment(text)].length;
 
-	$: formattedLengthWithoutNewlines = new Intl.NumberFormat('en-US').format(lengthWithoutNewlines);
+	$: formattedLengthWithoutNewlines = new Intl.NumberFormat("en-US").format(
+		lengthWithoutNewlines,
+	);
 </script>
 
 <svelte:head>
@@ -25,12 +27,19 @@
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
 		<h2 class="text-2xl font-bold">{i18nText.characters}</h2>
-		<div id="result-display" class="grid min-h-24 place-content-center rounded-md bg-slate-200 p-4">
-			<span class="text-6xl font-bold md:text-7xl">{formattedLengthWithoutNewlines}</span>
+		<div
+			id="result-display"
+			class="grid min-h-24 place-content-center rounded-md bg-slate-200 p-4"
+		>
+			<span class="text-6xl font-bold md:text-7xl"
+				>{formattedLengthWithoutNewlines}</span
+			>
 		</div>
 	</div>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
-		<label for="textarea" class="text-2xl font-bold">{i18nText.textToCount}</label>
+		<label for="textarea" class="text-2xl font-bold"
+			>{i18nText.textToCount}</label
+		>
 		<textarea
 			id="textarea"
 			rows="12"
@@ -39,7 +48,10 @@
 			bind:value={text}
 		/>
 	</div>
-	<a href="/{lang}" class="text-slate-600 underline underline-offset-2 md:col-span-2">
+	<a
+		href="/{lang}"
+		class="text-slate-600 underline underline-offset-2 md:col-span-2"
+	>
 		{i18nText.returnToTop}
 	</a>
 </div>

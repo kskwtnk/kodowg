@@ -40,14 +40,39 @@
 </script>
 
 <svelte:head>
-	<title>Kodowg - {i18nText.title}</title>
-	<meta property="og:title" content="Kodowg - {i18nText.title}" />
+	<title>{i18nText.title} - Kodowg</title>
+	<meta property="og:title" content="{i18nText.title} - Kodowg" />
 </svelte:head>
 
 <div
 	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 md:grid-cols-5 lg:gap-x-8"
 >
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
+	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
+		<label for="textarea" class="grid content-start gap-y-1">
+			<span class="text-2xl font-bold">{i18nText.itemList}</span>
+			<span class="leading-tight text-slate-600"
+				>{i18nText.itemListDescription}</span
+			>
+		</label>
+		<div class="grid gap-y-5">
+			<textarea
+				id="textarea"
+				rows="7"
+				placeholder={i18nText.placeholder}
+				class="rounded-md px-3 py-2"
+				bind:value={inputText}
+				on:input={adjustHeight}
+			/>
+			<button
+				disabled={isSpinning}
+				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
+				on:click={startRoulette}
+			>
+				{i18nText.start}
+			</button>
+		</div>
+	</div>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
 		<div class="grid content-start gap-y-1">
 			<h2 class="text-2xl font-bold">{i18nText.result}</h2>
@@ -67,34 +92,9 @@
 			</p>
 		</div>
 	</div>
-	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
-		<label for="textarea" class="grid content-start gap-y-1">
-			<span class="text-2xl font-bold">{i18nText.itemList}</span>
-			<span class="leading-tight text-slate-600"
-				>{i18nText.itemListDescription}</span
-			>
-		</label>
-		<div class="grid gap-y-5">
-			<textarea
-				id="textarea"
-				rows="10"
-				placeholder={i18nText.placeholder}
-				class="rounded-md px-3 py-2"
-				bind:value={inputText}
-				on:input={adjustHeight}
-			/>
-			<button
-				disabled={isSpinning}
-				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-				on:click={startRoulette}
-			>
-				{i18nText.start}
-			</button>
-		</div>
-	</div>
 	<a
 		href="/{lang}"
-		class="text-slate-600 underline underline-offset-2 md:col-span-2"
+		class="justify-self-start text-slate-600 underline underline-offset-2"
 	>
 		{i18nText.returnToTop}
 	</a>

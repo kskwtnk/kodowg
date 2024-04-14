@@ -40,8 +40,8 @@
 </script>
 
 <svelte:head>
-	<title>Kodowg - {i18nText.title}</title>
-	<meta property="og:title" content="Kodowg - {i18nText.title}" />
+	<title>{i18nText.title} - Kodowg</title>
+	<meta property="og:title" content="{i18nText.title} - Kodowg" />
 </svelte:head>
 
 <div

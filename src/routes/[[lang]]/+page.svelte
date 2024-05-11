@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let data;
 	const { lang, i18nText } = data;
 </script>
@@ -61,8 +61,6 @@
 				{i18nText.browser}
 				<ul class="list-circle pl-5">
 					<li>Google Chrome</li>
-					<li>Firefox</li>
-					<li>Safari</li>
 				</ul>
 			</li>
 		</ul>

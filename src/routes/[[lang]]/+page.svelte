@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	export let data;
 	const { lang, i18nText } = data;
 </script>
@@ -8,7 +8,7 @@
 	<meta property="og:title" content="Kodowg" />
 </svelte:head>
 
-<div class="mx-auto grid max-w-screen-lg grid-cols-1 gap-y-6 px-4 py-8">
+<div class="grid grid-cols-1 gap-y-6">
 	<h1 class="text-5xl font-bold">Kodowg</h1>
 	<div>
 		<p>{i18nText.description}</p>
@@ -61,8 +61,6 @@
 				{i18nText.browser}
 				<ul class="list-circle pl-5">
 					<li>Google Chrome</li>
-					<li>Firefox</li>
-					<li>Safari</li>
 				</ul>
 			</li>
 		</ul>

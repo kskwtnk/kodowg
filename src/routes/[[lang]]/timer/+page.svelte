@@ -83,9 +83,7 @@
 	<meta property="og:title" content="{i18nText.title} - Kodowg" />
 </svelte:head>
 
-<div
-	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 lg:gap-x-8"
->
+<div class="grid grid-cols-1 gap-x-4 gap-y-6 lg:gap-x-8">
 	<h1 class="text-5xl font-bold">{i18nText.title}</h1>
 	<div
 		id="result-display"

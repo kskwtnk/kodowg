@@ -6,6 +6,9 @@
 	button {
 		@apply cursor-pointer;
 	}
+	small {
+		font-size: inherit;
+	}
 	:disabled {
 		@apply cursor-not-allowed;
 	}

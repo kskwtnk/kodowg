@@ -44,9 +44,7 @@
 	<meta property="og:title" content="{i18nText.title} - Kodowg" />
 </svelte:head>
 
-<div
-	class="mx-auto grid max-w-screen-lg grid-cols-1 gap-x-4 gap-y-6 px-4 py-8 md:grid-cols-5 lg:gap-x-8"
->
+<div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
 		<label for="textarea" class="grid content-start gap-y-1">

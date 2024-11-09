@@ -1,10 +1,10 @@
 <script lang="ts">
-	export let data;
+	let { data } = $props();
 	const { lang, i18nText } = data;
-	let inputText = "";
+	let inputText = $state("");
 	let items: string[] = [];
-	let selectedItem = "";
-	let isSpinning = false;
+	let selectedItem = $state("");
+	let isSpinning = $state(false);
 
 	function startRoulette() {
 		if (inputText.trim() === "") return;
@@ -60,12 +60,12 @@
 				placeholder={i18nText.placeholder}
 				class="rounded-md px-3 py-2"
 				bind:value={inputText}
-				on:input={adjustHeight}
-			/>
+				oninput={adjustHeight}
+			></textarea>
 			<button
 				disabled={isSpinning}
 				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-				on:click={startRoulette}
+				onclick={startRoulette}
 			>
 				{i18nText.start}
 			</button>

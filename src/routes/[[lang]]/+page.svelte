@@ -3,7 +3,7 @@
 	import rouletteImage from "$lib/assets/roulette.png?enhanced";
 	import timerImage from "$lib/assets/timer.png?enhanced";
 
-	export let data;
+	let { data } = $props();
 	const { lang, i18nText } = data;
 </script>
 

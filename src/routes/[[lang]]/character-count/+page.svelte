@@ -1,18 +1,20 @@
 <script lang="ts">
-	export let data;
+	let { data } = $props();
 	const { lang, i18nText } = data;
-	let text = "";
+	let text = $state("");
 
 	// Using `String.prototype.length` will increase the count of surrogate pair characters, so use `Intl.Segmenter` instead.
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
 	let segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
 
-	$: lengthWithoutNewlines = text.includes("\n")
-		? [...segmenter.segment(text.replace(/\n/g, ""))].length
-		: [...segmenter.segment(text)].length;
+	let lengthWithoutNewlines = $derived(
+		text.includes("\n")
+			? [...segmenter.segment(text.replace(/\n/g, ""))].length
+			: [...segmenter.segment(text)].length,
+	);
 
-	$: formattedLengthWithoutNewlines = new Intl.NumberFormat("en-US").format(
-		lengthWithoutNewlines,
+	let formattedLengthWithoutNewlines = $derived(
+		new Intl.NumberFormat("en-US").format(lengthWithoutNewlines),
 	);
 </script>
 
@@ -33,7 +35,7 @@
 			placeholder={i18nText.placeholder}
 			class="rounded-md px-3 py-2"
 			bind:value={text}
-		/>
+		></textarea>
 	</div>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
 		<h2 class="text-2xl font-bold">{i18nText.characters}</h2>

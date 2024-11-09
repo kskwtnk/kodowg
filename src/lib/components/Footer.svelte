@@ -1,5 +1,5 @@
-<script>
-	export let author;
+<script lang="ts">
+	let { author } = $props();
 </script>
 
 <footer class="flex items-center justify-between">

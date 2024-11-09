@@ -3,8 +3,10 @@
 	import { page } from "$app/stores";
 	import Footer from "$lib/components/Footer.svelte";
 
-	export let data;
+	let { data, children } = $props();
 	const { i18nText } = data;
+
+	const children_render = $derived(children);
 </script>
 
 <svelte:head>
@@ -19,6 +21,6 @@
 </svelte:head>
 
 <div class="mx-auto grid max-w-screen-lg gap-y-12 px-4 py-8">
-	<slot />
+	{@render children_render?.()}
 	<Footer author={i18nText.author} />
 </div>

@@ -1,51 +1,61 @@
 <script lang="ts">
-	export let data;
-	const { lang, i18nText } = data;
 	import { onDestroy } from "svelte";
+
+	let { data } = $props();
+	const { lang, i18nText } = data;
 
 	// Define the possible states of the timer.
 	type TimerState = "ready" | "running" | "paused";
-
 	// Timer setup variables.
-	let minutes: number;
-	let seconds: number;
+	let minutes: number = $state(0);
+	let seconds: number = $state(0);
 	let max: number = 59;
 	let min: number = 0;
-	let totalSeconds: number = 0;
+	let totalSeconds: number = $state(0);
 	let initialSeconds: number = 0;
-	let displayMinutes: number;
-	let displaySeconds: number;
-	let timerState: TimerState = "ready";
-	let countdownTimerId: ReturnType<typeof setInterval> | undefined;
+	let displayMinutes: number = $derived(Math.floor(totalSeconds / 60));
+	let displaySeconds: number = $derived(totalSeconds % 60);
+	let timerState: TimerState = $state("ready");
+	let countdownTimerId: ReturnType<typeof setInterval> | undefined = $state();
 
 	// Ensure minutes and seconds don't exceed the maximum allowed value.
-	$: if (minutes > max) {
-		minutes = max;
-	}
-	$: if (seconds > max) {
-		seconds = max;
-	}
+	$effect(() => {
+		if (minutes > max) {
+			minutes = max;
+		}
+	});
+	$effect(() => {
+		if (seconds > max) {
+			seconds = max;
+		}
+	});
 
 	// Ensure minutes and seconds don't exceed the minimum allowed value.
-	$: if (minutes < min) {
-		minutes = min;
-	}
-	$: if (seconds < min) {
-		seconds = min;
-	}
+	$effect(() => {
+		if (minutes < min) {
+			minutes = min;
+		}
+	});
+	$effect(() => {
+		if (seconds < min) {
+			seconds = min;
+		}
+	});
 
 	// Calculate total seconds whenever minutes or seconds input changes.
-	$: totalSeconds = (minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
+	$effect(() => {
+		totalSeconds = (minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
+	});
 
 	// Stop the timer and reset the state if totalSeconds is 0 or less.
-	$: if (totalSeconds < 0) {
-		clearInterval(countdownTimerId);
-		timerState = "ready";
-	}
+	$effect(() => {
+		if (totalSeconds < 0) {
+			clearInterval(countdownTimerId);
+			timerState = "ready";
+		}
+	});
 
 	// Calculate display minutes and seconds from total seconds.
-	$: displayMinutes = Math.floor(totalSeconds / 60);
-	$: displaySeconds = totalSeconds % 60;
 
 	function countdown() {
 		countdownTimerId = setInterval(() => {
@@ -134,27 +144,27 @@
 			{#if timerState === "ready"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					on:click={startTimer}>{i18nText.start}</button
+					onclick={startTimer}>{i18nText.start}</button
 				>
 			{/if}
 
 			{#if timerState === "running"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					on:click={pauseTimer}>{i18nText.pause}</button
+					onclick={pauseTimer}>{i18nText.pause}</button
 				>
 			{/if}
 
 			{#if timerState === "paused"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					on:click={countdown}>{i18nText.resume}</button
+					onclick={countdown}>{i18nText.resume}</button
 				>
 			{/if}
 			<button
 				disabled={timerState === "ready"}
 				class="rounded-md border border-slate-500 bg-slate-100 p-2 text-2xl font-bold text-slate-600 hover:bg-slate-200 hover:text-slate-800 disabled:border-slate-300 disabled:bg-slate-200 disabled:text-slate-400"
-				on:click={cancelTimer}>{i18nText.cancel}</button
+				onclick={cancelTimer}>{i18nText.cancel}</button
 			>
 		</div>
 	</div>

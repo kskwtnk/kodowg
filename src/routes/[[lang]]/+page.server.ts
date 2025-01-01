@@ -3,7 +3,8 @@ const i18nText = {
 		description:
 			"Kodowg is a word inspired by the Japanese term “小道具” (which means “props”). We offer you nifty tools for those little tasks in life.",
 		functionName: {
-			characterCount: "Character Count",
+			"character-count": "Character Count",
+			"random-order": "Random Order",
 			roulette: "Roulette",
 			timer: "Timer",
 		},
@@ -14,7 +15,8 @@ const i18nText = {
 		description:
 			"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
 		functionName: {
-			characterCount: "文字数カウント",
+			"character-count": "文字数カウント",
+			"random-order": "ランダム並び替え",
 			roulette: "ルーレット",
 			timer: "タイマー",
 		},
@@ -23,9 +25,15 @@ const i18nText = {
 	},
 };
 
+// i18nText.en.functionNameのキーからpagesを生成
+const pages = Object.keys(
+	i18nText.en.functionName,
+) as (keyof typeof i18nText.en.functionName)[];
+
 export function load({ params }: { params: { lang: "en" | "ja" } }) {
 	return {
 		lang: params.lang ?? "en",
 		i18nText: i18nText[params.lang ?? "en"],
+		pages,
 	};
 }

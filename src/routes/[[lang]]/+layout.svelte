@@ -2,6 +2,7 @@
 	import { page } from "$app/stores";
 	import Footer from "$lib/components/Footer.svelte";
 	import Header from "$lib/components/Header.svelte";
+	import SupportSection from "$lib/components/SupportSection.svelte";
 	import "../../app.css";
 
 	let { data, children } = $props();
@@ -22,9 +23,14 @@
 </svelte:head>
 
 <Header {lang} />
-<main
-	class="mx-auto grid w-full max-w-screen-lg grow items-start gap-y-12 px-4 py-8"
+<div
+	class="mx-auto flex w-full max-w-screen-lg grow flex-col gap-y-6 px-4 py-6"
 >
-	{@render children_render?.()}
-</main>
+	<main>
+		{@render children_render?.()}
+	</main>
+	<aside class="mt-auto">
+		<SupportSection {i18nText} />
+	</aside>
+</div>
 <Footer author={i18nText.author} />

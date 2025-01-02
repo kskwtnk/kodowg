@@ -27,7 +27,7 @@
 			{/each}
 		</div>
 	</div>
-	<div class="grid gap-y-4 rounded-md">
+	<div class="grid gap-y-3">
 		<p>{i18nText.note}</p>
 		<ul class="list-disc pl-5">
 			<li>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { data } = $props();
-	const { lang, i18nText } = data;
+	const { i18nText } = data;
 	let inputText = $state("");
 	let items: string[] = [];
 	let selectedItem = $state("");
@@ -90,10 +90,4 @@
 			</p>
 		</div>
 	</div>
-	<a
-		href="/{lang}"
-		class="justify-self-start text-slate-600 underline underline-offset-2"
-	>
-		{i18nText.returnToTop}
-	</a>
 </div>

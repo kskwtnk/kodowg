@@ -7,7 +7,6 @@ const i18nText = {
 		pause: "Pause",
 		resume: "Resume",
 		cancel: "Cancel",
-		returnToTop: "Return to top page",
 	},
 	ja: {
 		title: "タイマー",
@@ -17,13 +16,11 @@ const i18nText = {
 		pause: "一時停止",
 		resume: "再開",
 		cancel: "キャンセル",
-		returnToTop: "トップページに戻る",
 	},
 };
 
 export function load({ params }: { params: { lang: "en" | "ja" } }) {
 	return {
-		lang: params.lang ?? "en",
 		i18nText: i18nText[params.lang ?? "en"],
 	};
 }

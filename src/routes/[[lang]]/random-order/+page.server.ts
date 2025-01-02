@@ -8,7 +8,6 @@ const i18nText = {
 		itemListDescription: "(Please enter with line separation)",
 		placeholder: "Item names",
 		shuffle: "Shuffle",
-		returnToTop: "Return to top page",
 	},
 	ja: {
 		title: "ランダム並び替え",
@@ -19,13 +18,11 @@ const i18nText = {
 		itemListDescription: "（改行区切りで入力してください）",
 		placeholder: "候補の名前",
 		shuffle: "シャッフル",
-		returnToTop: "トップページに戻る",
 	},
 };
 
 export function load({ params }: { params: { lang: "en" | "ja" } }) {
 	return {
-		lang: params.lang ?? "en",
 		i18nText: i18nText[params.lang ?? "en"],
 	};
 }

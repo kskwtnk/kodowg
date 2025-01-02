@@ -2,7 +2,7 @@
 	import { onDestroy } from "svelte";
 
 	let { data } = $props();
-	const { lang, i18nText } = data;
+	const { i18nText } = data;
 
 	// Define the possible states of the timer.
 	type TimerState = "ready" | "running" | "paused";
@@ -167,11 +167,6 @@
 				onclick={cancelTimer}>{i18nText.cancel}</button
 			>
 		</div>
-	</div>
-	<div>
-		<a href="/{lang}" class="text-slate-600 underline underline-offset-2"
-			>{i18nText.returnToTop}</a
-		>
 	</div>
 </div>
 

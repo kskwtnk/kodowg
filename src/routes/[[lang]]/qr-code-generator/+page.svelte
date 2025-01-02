@@ -2,7 +2,7 @@
 	import QRCode from "qrcode";
 
 	let { data } = $props();
-	const { lang, i18nText } = data;
+	const { i18nText } = data;
 	const QR_SIZES = [256, 512, 1024] as const;
 	type QRSize = (typeof QR_SIZES)[number];
 
@@ -140,11 +140,4 @@
 			{/if}
 		</div>
 	</div>
-
-	<a
-		href="/{lang}"
-		class="justify-self-start text-slate-600 underline underline-offset-2"
-	>
-		{i18nText.returnToTop}
-	</a>
 </div>

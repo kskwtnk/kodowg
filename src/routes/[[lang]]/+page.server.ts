@@ -10,7 +10,6 @@ const i18nText = {
 			timer: "Timer",
 		},
 		note: "This site has been tested for operation in the following environments:",
-		browser: "Browser",
 	},
 	ja: {
 		description:
@@ -23,7 +22,6 @@ const i18nText = {
 			timer: "タイマー",
 		},
 		note: "このサイトは以下の環境で動作確認を行っています:",
-		browser: "ブラウザ",
 	},
 };
 

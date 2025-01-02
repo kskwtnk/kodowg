@@ -31,15 +31,15 @@
 		<p>{i18nText.note}</p>
 		<ul class="list-disc pl-5">
 			<li>
-				OS
+				macOS
 				<ul class="list-circle pl-5">
-					<li>macOS</li>
+					<li>Arc</li>
 				</ul>
 			</li>
 			<li>
-				{i18nText.browser}
+				iOS
 				<ul class="list-circle pl-5">
-					<li>Google Chrome</li>
+					<li>Arc Search</li>
 				</ul>
 			</li>
 		</ul>

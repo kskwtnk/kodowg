@@ -25,7 +25,7 @@ const i18nText = {
 	},
 };
 
-// i18nText.en.functionNameのキーからpagesを生成
+// Generate pages from keys of i18nText.en.functionName
 const pages = Object.keys(
 	i18nText.en.functionName,
 ) as (keyof typeof i18nText.en.functionName)[];

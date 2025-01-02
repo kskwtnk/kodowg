@@ -10,6 +10,8 @@
 	<div class="flex gap-x-1">
 		<a
 			href="https://github.com/xrxoxcxox"
+			target="_blank"
+			rel="nofollow"
 			aria-label="GitHub"
 			class="size-11 p-2"
 		>
@@ -27,6 +29,8 @@
 		</a>
 		<a
 			href="https://www.instagram.com/xrxoxcxox"
+			target="_blank"
+			rel="nofollow"
 			aria-label="Instagram"
 			class="size-11 p-2"
 		>
@@ -44,6 +48,8 @@
 		</a>
 		<a
 			href="https://twitter.com/xrxoxcxox"
+			target="_blank"
+			rel="nofollow"
 			aria-label="X (Twitter)"
 			class="size-11 p-2"
 		>

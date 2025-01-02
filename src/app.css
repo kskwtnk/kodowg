@@ -1,8 +1,5 @@
 @tailwind base;
 @layer base {
-	body {
-		@apply min-h-svh bg-slate-100 text-lg text-slate-800 antialiased;
-	}
 	button {
 		@apply cursor-pointer;
 	}
@@ -13,7 +10,7 @@
 		@apply cursor-not-allowed;
 	}
 	:focus {
-		@apply outline-offset-4;
+		@apply outline-offset-4 outline-blue-600;
 	}
 }
 @tailwind components;

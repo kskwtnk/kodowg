@@ -1,10 +1,11 @@
 <script lang="ts">
-	import "../../app.css";
 	import { page } from "$app/stores";
 	import Footer from "$lib/components/Footer.svelte";
+	import Header from "$lib/components/Header.svelte";
+	import "../../app.css";
 
 	let { data, children } = $props();
-	const { i18nText } = data;
+	const { i18nText, lang } = data;
 
 	const children_render = $derived(children);
 </script>
@@ -20,7 +21,10 @@
 	<meta name="twitter:site" content="@xrxoxcxox" />
 </svelte:head>
 
-<div class="mx-auto grid max-w-screen-lg gap-y-12 px-4 py-8">
+<Header {lang} />
+<main
+	class="mx-auto grid w-full max-w-screen-lg grow items-start gap-y-12 px-4 py-8"
+>
 	{@render children_render?.()}
-	<Footer author={i18nText.author} />
-</div>
+</main>
+<Footer author={i18nText.author} />

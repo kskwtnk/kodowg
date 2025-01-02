@@ -1,8 +1,11 @@
 <script lang="ts">
-	let { author } = $props();
+	interface Props {
+		author: string;
+	}
+	let { author }: Props = $props();
 </script>
 
-<footer class="flex items-center justify-between">
+<footer class="flex items-center justify-between p-4 lg:px-8">
 	<small class="text-sm text-slate-600">© 2024 {author}</small>
 	<div class="flex gap-x-1">
 		<a

@@ -5,6 +5,8 @@
 	let { lang }: Props = $props();
 </script>
 
-<header class="flex items-center bg-white px-4 py-3 lg:px-8">
-	<a href="/{lang}" class="text-xl font-bold">Kodowg</a>
+<header class="flex items-center justify-center border-b border-gray-200">
+	<div class="flex w-full max-w-screen-lg px-4 py-3">
+		<a href="/{lang}" class="text-xl font-bold">Kodowg</a>
+	</div>
 </header>

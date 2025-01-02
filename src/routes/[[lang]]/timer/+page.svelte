@@ -163,7 +163,7 @@
 			{/if}
 			<button
 				disabled={timerState === "ready"}
-				class="rounded-md border border-slate-500 bg-slate-100 p-2 text-2xl font-bold text-slate-600 hover:bg-slate-200 hover:text-slate-800 disabled:border-slate-300 disabled:bg-slate-200 disabled:text-slate-400"
+				class="rounded-md border border-slate-300 bg-white p-2 text-2xl font-bold text-slate-600 hover:bg-slate-200 hover:text-slate-800 disabled:bg-slate-200 disabled:text-slate-400"
 				onclick={cancelTimer}>{i18nText.cancel}</button
 			>
 		</div>

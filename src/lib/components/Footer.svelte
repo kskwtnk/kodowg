@@ -1,12 +1,17 @@
 <script lang="ts">
-	let { author } = $props();
+	interface Props {
+		author: string;
+	}
+	let { author }: Props = $props();
 </script>
 
-<footer class="flex items-center justify-between">
+<footer class="flex items-center justify-between p-4 lg:px-8">
 	<small class="text-sm text-slate-600">© 2024 {author}</small>
 	<div class="flex gap-x-1">
 		<a
 			href="https://github.com/xrxoxcxox"
+			target="_blank"
+			rel="nofollow"
 			aria-label="GitHub"
 			class="size-11 p-2"
 		>
@@ -24,6 +29,8 @@
 		</a>
 		<a
 			href="https://www.instagram.com/xrxoxcxox"
+			target="_blank"
+			rel="nofollow"
 			aria-label="Instagram"
 			class="size-11 p-2"
 		>
@@ -41,6 +48,8 @@
 		</a>
 		<a
 			href="https://twitter.com/xrxoxcxox"
+			target="_blank"
+			rel="nofollow"
 			aria-label="X (Twitter)"
 			class="size-11 p-2"
 		>

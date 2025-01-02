@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { data } = $props();
-	const { lang, i18nText } = data;
+	const { i18nText } = data;
 	let inputText = $state("");
 	let items: string[] = [];
 	let shuffledItems = $state<string[]>([]);
@@ -57,9 +57,9 @@
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
 		<label for="textarea" class="grid content-start gap-y-1">
 			<span class="text-2xl font-bold">{i18nText.itemList}</span>
-			<span class="leading-tight text-slate-600"
-				>{i18nText.itemListDescription}</span
-			>
+			<span class="text-base leading-tight text-slate-600">
+				{i18nText.itemListDescription}
+			</span>
 		</label>
 		<div class="grid gap-y-5">
 			<textarea
@@ -82,9 +82,9 @@
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
 		<div class="grid content-start gap-y-1">
 			<h2 class="text-2xl font-bold">{i18nText.result}</h2>
-			<span class="leading-tight text-slate-600"
-				>{i18nText.resultDescription}</span
-			>
+			<span class="text-base leading-tight text-slate-600">
+				{i18nText.resultDescription}
+			</span>
 		</div>
 		<div id="result-display" class="grid rounded-md bg-slate-200 p-4">
 			{#if shuffledItems.length > 0}
@@ -102,10 +102,4 @@
 			{/if}
 		</div>
 	</div>
-	<a
-		href="/{lang}"
-		class="justify-self-start text-slate-600 underline underline-offset-2"
-	>
-		{i18nText.returnToTop}
-	</a>
 </div>

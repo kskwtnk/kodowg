@@ -10,7 +10,6 @@ const i18nText = {
 			timer: "Timer",
 		},
 		note: "This site has been tested for operation in the following environments:",
-		browser: "Browser",
 	},
 	ja: {
 		description:
@@ -23,11 +22,10 @@ const i18nText = {
 			timer: "タイマー",
 		},
 		note: "このサイトは以下の環境で動作確認を行っています:",
-		browser: "ブラウザ",
 	},
 };
 
-// i18nText.en.functionNameのキーからpagesを生成
+// Generate pages from keys of i18nText.en.functionName
 const pages = Object.keys(
 	i18nText.en.functionName,
 ) as (keyof typeof i18nText.en.functionName)[];

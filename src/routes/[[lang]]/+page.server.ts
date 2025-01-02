@@ -4,6 +4,7 @@ const i18nText = {
 			"Kodowg is a word inspired by the Japanese term “小道具” (which means “props”). We offer you nifty tools for those little tasks in life.",
 		functionName: {
 			"character-count": "Character Count",
+			"qr-code-generator": "QR Code Generator",
 			"random-order": "Random Order",
 			roulette: "Roulette",
 			timer: "Timer",
@@ -16,6 +17,7 @@ const i18nText = {
 			"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
 		functionName: {
 			"character-count": "文字数カウント",
+			"qr-code-generator": "QRコードジェネレーター",
 			"random-order": "ランダム並び替え",
 			roulette: "ルーレット",
 			timer: "タイマー",

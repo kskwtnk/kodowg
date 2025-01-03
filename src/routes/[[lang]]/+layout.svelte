@@ -19,7 +19,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Kodowg" />
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@xrxoxcxox" />
+	<meta name="twitter:site" content="@kskwtnk" />
 </svelte:head>
 
 <Header {lang} />

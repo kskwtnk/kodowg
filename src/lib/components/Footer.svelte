@@ -12,7 +12,7 @@
 		<small class="text-sm text-slate-600">© 2024 {author}</small>
 		<div class="flex gap-x-1">
 			<a
-				href="https://github.com/xrxoxcxox"
+				href="https://github.com/kskwtnk"
 				target="_blank"
 				rel="nofollow"
 				aria-label="GitHub"
@@ -31,7 +31,7 @@
 				</svg>
 			</a>
 			<a
-				href="https://www.instagram.com/xrxoxcxox"
+				href="https://www.instagram.com/kskwtnk"
 				target="_blank"
 				rel="nofollow"
 				aria-label="Instagram"
@@ -50,7 +50,7 @@
 				</svg>
 			</a>
 			<a
-				href="https://twitter.com/xrxoxcxox"
+				href="https://twitter.com/kskwtnk"
 				target="_blank"
 				rel="nofollow"
 				aria-label="X (Twitter)"

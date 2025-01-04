@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from "$app/stores";
+	import CommonMeta from "$lib/components/CommonMeta.svelte";
 	let { data } = $props();
 	const { i18nText } = data;
 	let inputText = $state("");
@@ -39,10 +41,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{i18nText.title} - Kodowg</title>
-	<meta property="og:title" content="{i18nText.title} - Kodowg" />
-</svelte:head>
+<CommonMeta {i18nText} pageUrl={$page.url} />
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
@@ -64,7 +63,7 @@
 			></textarea>
 			<button
 				disabled={isSpinning}
-				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
+				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white disabled:opacity-50 hover:bg-indigo-800"
 				onclick={startRoulette}
 			>
 				{i18nText.start}

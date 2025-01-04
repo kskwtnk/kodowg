@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { page } from "$app/stores";
+	import CommonMeta from "$lib/components/CommonMeta.svelte";
 	import QRCode from "qrcode";
 
 	let { data } = $props();
@@ -52,10 +54,7 @@
 	});
 </script>
 
-<svelte:head>
-	<title>{i18nText.title} - Kodowg</title>
-	<meta property="og:title" content="{i18nText.title} - Kodowg" />
-</svelte:head>
+<CommonMeta {i18nText} pageUrl={$page.url} />
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
@@ -119,7 +118,7 @@
 		<button
 			onclick={downloadQRCode}
 			disabled={!qrDataUrl}
-			class="rounded-md bg-blue-600 px-4 py-2 font-bold text-white hover:bg-blue-700 disabled:bg-slate-400"
+			class="rounded-md bg-blue-600 px-4 py-2 font-bold text-white disabled:bg-slate-400 hover:bg-blue-700"
 		>
 			{i18nText.download}
 		</button>

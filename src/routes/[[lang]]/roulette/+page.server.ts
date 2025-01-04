@@ -1,6 +1,8 @@
 const i18nText = {
 	en: {
 		title: "Roulette",
+		description:
+			"Free browser-based roulette decision maker. Enter your options line by line and spin to randomly select one item. No data stored on servers - your choices remain private.",
 		result: "Result",
 		resultDescription: "It will be displayed when you press the start button",
 		chosen: "The chosen one is...",
@@ -11,6 +13,8 @@ const i18nText = {
 	},
 	ja: {
 		title: "ルーレット",
+		description:
+			"ブラウザ上で使える無料のルーレットツール。要素を改行区切りで入力してスタートボタンを押すと、ランダムに1つ選ばれます。サーバー上にデータを保存しないため安心して利用できます。",
 		result: "結果",
 		resultDescription: "スタートボタンを押すと表示されます",
 		chosen: "選ばれたのは……",

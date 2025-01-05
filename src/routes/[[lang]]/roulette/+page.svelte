@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import CommonMeta from "$lib/components/CommonMeta.svelte";
 	let { data } = $props();
 	const { i18nText } = data;
 	let inputText = $state("");
@@ -40,8 +38,6 @@
 		textarea.style.height = textarea.scrollHeight + "px";
 	}
 </script>
-
-<CommonMeta {i18nText} pageUrl={$page.url} />
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>

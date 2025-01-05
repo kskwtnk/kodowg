@@ -14,6 +14,9 @@
 			? `${$page.data.i18nText.title} - Kodowg`
 			: "Kodowg",
 	);
+
+	const getAlternateLanguage = (currentLang: "en" | "ja") =>
+		currentLang === "en" ? "ja" : "en";
 </script>
 
 <svelte:head>
@@ -27,6 +30,18 @@
 	<meta property="og:site_name" content="Kodowg" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:site" content="@kskwtnk" />
+	<link
+		rel="alternate"
+		hreflang={lang}
+		href="{$page.url.origin}{$page.url.pathname}"
+	/>
+	<link
+		rel="alternate"
+		hreflang={getAlternateLanguage(lang)}
+		href="{$page.url.origin}/{getAlternateLanguage(
+			lang,
+		)}{$page.url.pathname.replace(/^\/(en|ja)/, '')}"
+	/>
 </svelte:head>
 
 <Header {lang} />

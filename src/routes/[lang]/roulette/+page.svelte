@@ -1,39 +1,28 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import CommonMeta from "$lib/components/CommonMeta.svelte";
-
 	let { data } = $props();
 	const { i18nText } = data;
 	let inputText = $state("");
 	let items: string[] = [];
-	let shuffledItems = $state<string[]>([]);
+	let selectedItem = $state("");
 	let isSpinning = $state(false);
 
-	function startShuffle() {
+	function startRoulette() {
 		if (inputText.trim() === "") return;
 
-		isSpinning = true;
 		items = inputText.split("\n").filter((line) => line.trim() !== "");
+		selectedItem = selectedItem ? selectedItem : "";
+		isSpinning = true;
 
 		let spinCount = Math.floor(Math.random() * 10) + 20;
-		let tempArray = [...items];
+		let currentIndex = 0;
 
 		const interval = setInterval(() => {
-			for (let i = tempArray.length - 1; i > 0; i--) {
-				const j = Math.floor(Math.random() * (i + 1));
-				[tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
-			}
-			shuffledItems = [...tempArray];
-
+			selectedItem = items[currentIndex];
+			currentIndex = (currentIndex + 1) % items.length;
 			spinCount--;
+
 			if (spinCount <= 0) {
 				clearInterval(interval);
-				const finalArray = [...items];
-				for (let i = finalArray.length - 1; i > 0; i--) {
-					const j = Math.floor(Math.random() * (i + 1));
-					[finalArray[i], finalArray[j]] = [finalArray[j], finalArray[i]];
-				}
-				shuffledItems = finalArray;
 				isSpinning = false;
 			}
 		}, 100);
@@ -49,8 +38,6 @@
 		textarea.style.height = textarea.scrollHeight + "px";
 	}
 </script>
-
-<CommonMeta {i18nText} pageUrl={$page.url} />
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
@@ -73,9 +60,9 @@
 			<button
 				disabled={isSpinning}
 				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white disabled:opacity-50 hover:bg-indigo-800"
-				onclick={startShuffle}
+				onclick={startRoulette}
 			>
-				{i18nText.shuffle}
+				{i18nText.start}
 			</button>
 		</div>
 	</div>
@@ -86,20 +73,16 @@
 				{i18nText.resultDescription}
 			</span>
 		</div>
-		<div id="result-display" class="grid rounded-md bg-slate-200 p-4">
-			{#if shuffledItems.length > 0}
-				<ol class="list-decimal pl-8">
-					{#each shuffledItems as item}
-						<li class="my-2 text-2xl font-bold">{item}</li>
-					{/each}
-				</ol>
-			{:else}
-				<p class="self-center text-center font-bold">
-					<span class="text-3xl text-slate-500 md:text-4xl">
-						{i18nText.waiting}
-					</span>
-				</p>
-			{/if}
+		<div id="result-display" class="grid min-h-24 rounded-md bg-slate-200 p-4">
+			<p class="self-center text-center font-bold">
+				{#if selectedItem}
+					<span class="text-6xl md:text-8xl">{selectedItem}</span>
+				{:else}
+					<span class="text-3xl text-slate-500 md:text-4xl"
+						>{i18nText.chosen}</span
+					>
+				{/if}
+			</p>
 		</div>
 	</div>
 </div>

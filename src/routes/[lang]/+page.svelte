@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { page } from "$app/stores";
-	import CommonMeta from "$lib/components/CommonMeta.svelte";
 
 	let { data } = $props();
 	const { lang, i18nText, pages } = data;
 </script>
 
-<CommonMeta {i18nText} pageUrl={$page.url} />
+<svelte:head>
+	<link rel="alternate" hreflang="x-default" href="{$page.url.origin}/en" />
+</svelte:head>
 
 <div class="grid grid-cols-1 gap-y-9">
 	<div class="grid grid-cols-subgrid gap-y-6">

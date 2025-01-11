@@ -3,7 +3,7 @@
 	import Footer from "$lib/components/Footer.svelte";
 	import Header from "$lib/components/Header.svelte";
 	import SupportSection from "$lib/components/SupportSection.svelte";
-	import { MetaTags } from "svelte-meta-tags";
+	import { JsonLd, MetaTags } from "svelte-meta-tags";
 	import "../../app.css";
 
 	let { data, children } = $props();
@@ -53,6 +53,22 @@
 			href: `${$page.url.origin}/en${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
 		},
 	]}
+/>
+
+<JsonLd
+	schema={{
+		"@type": "WebSite",
+		name: "Kodowg",
+		inLanguage: lang,
+		author: {
+			"@type": "Person",
+			name: "Keisuke Watanuki",
+		},
+		copyrightYear: "2024",
+		headline: pageTitle,
+		description: $page.data.i18nText.description,
+		url: $page.url.href,
+	}}
 />
 
 <Header {lang} />

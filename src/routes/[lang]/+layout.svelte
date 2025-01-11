@@ -9,7 +9,6 @@
 	let { data, children } = $props();
 	const { i18nText, lang } = data;
 
-	const children_render = $derived(children);
 	const pageTitle = $derived(
 		$page.data.i18nText.title
 			? `${$page.data.i18nText.title} - Kodowg`
@@ -76,10 +75,10 @@
 	class="mx-auto flex w-full max-w-screen-lg grow flex-col gap-y-6 px-4 py-6"
 >
 	<main>
-		{@render children_render?.()}
+		{@render children()}
 	</main>
 	<aside class="mt-auto">
 		<SupportSection {i18nText} />
 	</aside>
 </div>
-<Footer author={i18nText.author} />
+<Footer />

@@ -1,10 +1,10 @@
 const pages = [
 	"",
-	"character-count",
-	"qr-code-generator",
-	"random-order",
-	"roulette",
-	"timer",
+	"/character-count",
+	"/qr-code-generator",
+	"/random-order",
+	"/roulette",
+	"/timer",
 ];
 
 const languages = ["en", "ja"];
@@ -21,7 +21,7 @@ export async function GET() {
 					pages
 						.map(
 							(page) =>
-								`<url><loc>https://kodowg.kskwtnk.com/${lang}/${page}</loc></url>`,
+								`<url><loc>https://kodowg.kskwtnk.com/${lang}${page}</loc></url>`,
 						)
 						.join(""),
 				)

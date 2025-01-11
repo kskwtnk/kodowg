@@ -21,7 +21,7 @@
 		{i18nText.support.cta}
 		<a
 			href="https://github.com/sponsors/kskwtnk"
-			class="underline hover:text-blue-600"
+			class="underline hover:text-indigo-600"
 			target="_blank"
 			rel="nofollow"
 		>

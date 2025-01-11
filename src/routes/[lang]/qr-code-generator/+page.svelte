@@ -78,7 +78,7 @@
 							name="size"
 							value={size}
 							bind:group={qrSize}
-							class="accent-blue-600"
+							class="accent-indigo-600"
 						/>
 						{size}px
 					</label>
@@ -95,7 +95,7 @@
 						name="format"
 						value="png"
 						bind:group={fileFormat}
-						class="accent-blue-600"
+						class="accent-indigo-600"
 					/>
 					PNG
 				</label>
@@ -105,7 +105,7 @@
 						name="format"
 						value="svg"
 						bind:group={fileFormat}
-						class="accent-blue-600"
+						class="accent-indigo-600"
 					/>
 					SVG
 				</label>
@@ -114,7 +114,7 @@
 		<button
 			onclick={downloadQRCode}
 			disabled={!qrDataUrl}
-			class="rounded-md bg-blue-600 px-4 py-2 font-bold text-white disabled:bg-slate-400 hover:bg-blue-700"
+			class="rounded-md bg-indigo-600 px-4 py-2 font-bold text-white disabled:bg-slate-400 hover:bg-indigo-700"
 		>
 			{i18nText.download}
 		</button>

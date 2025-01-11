@@ -1,15 +1,8 @@
-<script lang="ts">
-	interface Props {
-		author: string;
-	}
-	let { author }: Props = $props();
-</script>
-
 <footer class="flex items-center justify-center border-t border-gray-200">
 	<div
 		class="flex w-full max-w-screen-lg items-center justify-between px-4 py-3"
 	>
-		<small class="text-sm text-slate-600">© 2024 {author}</small>
+		<small class="text-sm text-slate-600">© 2024 Keisuke Watanuki</small>
 		<div class="flex gap-x-1">
 			<a
 				href="https://github.com/kskwtnk"

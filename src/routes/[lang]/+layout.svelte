@@ -81,4 +81,4 @@
 		<SupportSection {i18nText} />
 	</aside>
 </div>
-<Footer author={i18nText.author} />
+<Footer />

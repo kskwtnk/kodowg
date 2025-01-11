@@ -3,6 +3,7 @@
 	import Footer from "$lib/components/Footer.svelte";
 	import Header from "$lib/components/Header.svelte";
 	import SupportSection from "$lib/components/SupportSection.svelte";
+	import { JsonLd, MetaTags } from "svelte-meta-tags";
 	import "../../app.css";
 
 	let { data, children } = $props();
@@ -14,35 +15,61 @@
 			? `${$page.data.i18nText.title} - Kodowg`
 			: "Kodowg",
 	);
-
-	const getAlternateLanguage = (currentLang: "en" | "ja") =>
-		currentLang === "en" ? "ja" : "en";
 </script>
 
-<svelte:head>
-	<title>{pageTitle}</title>
-	<meta property="og:title" content={pageTitle} />
-	<meta name="description" content={$page.data.i18nText.description} />
-	<meta property="og:description" content={$page.data.i18nText.description} />
-	<meta property="og:url" content={$page.url.href} />
-	<meta property="og:image" content="{$page.url.origin}/og-image.jpg" />
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="Kodowg" />
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@kskwtnk" />
-	<link
-		rel="alternate"
-		hreflang={lang}
-		href="{$page.url.origin}{$page.url.pathname}"
-	/>
-	<link
-		rel="alternate"
-		hreflang={getAlternateLanguage(lang)}
-		href="{$page.url.origin}/{getAlternateLanguage(
-			lang,
-		)}{$page.url.pathname.replace(/^\/(en|ja)/, '')}"
-	/>
-</svelte:head>
+<MetaTags
+	title={pageTitle}
+	description={$page.data.i18nText.description}
+	openGraph={{
+		url: $page.url.href,
+		title: pageTitle,
+		description: $page.data.i18nText.description,
+		images: [
+			{
+				url: `${$page.url.origin}/og-image.jpg`,
+				width: 1200,
+				height: 630,
+				alt: "Kodowg",
+			},
+		],
+		siteName: "Kodowg",
+	}}
+	twitter={{
+		creator: "@kskwtnk",
+		site: "@kskwtnk",
+		cardType: "summary_large_image",
+		title: pageTitle,
+		description: $page.data.i18nText.description,
+		image: `${$page.url.origin}/og-image.jpg`,
+		imageAlt: "Kodowg",
+	}}
+	languageAlternates={[
+		{
+			hrefLang: "ja",
+			href: `${$page.url.origin}/ja${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
+		},
+		{
+			hrefLang: "en",
+			href: `${$page.url.origin}/en${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
+		},
+	]}
+/>
+
+<JsonLd
+	schema={{
+		"@type": "WebSite",
+		name: "Kodowg",
+		inLanguage: lang,
+		author: {
+			"@type": "Person",
+			name: "Keisuke Watanuki",
+		},
+		copyrightYear: "2024",
+		headline: pageTitle,
+		description: $page.data.i18nText.description,
+		url: $page.url.href,
+	}}
+/>
 
 <Header {lang} />
 <div

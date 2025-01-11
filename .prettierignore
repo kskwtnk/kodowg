@@ -1,2 +1,4 @@
 # Ignore because it conflicts with formatting by Prettier when installing dependencies
 package.json
+pnpm-lock.yaml
+.github/

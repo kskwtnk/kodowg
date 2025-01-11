@@ -10,7 +10,7 @@
 		@apply cursor-not-allowed;
 	}
 	:focus {
-		@apply outline-offset-4 outline-blue-600;
+		@apply outline-offset-4 outline-indigo-600;
 	}
 }
 @tailwind components;

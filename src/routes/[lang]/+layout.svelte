@@ -7,7 +7,7 @@
 	import "../../app.css";
 
 	let { data, children } = $props();
-	const { i18nText, lang } = data;
+	const { i18nText, lang } = $derived(data);
 
 	const pageTitle = $derived(
 		$page.data.i18nText.title

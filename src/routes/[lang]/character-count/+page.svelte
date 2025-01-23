@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { data } = $props();
-	const { i18nText } = data;
+	const { i18nText } = $derived(data);
 	let text = $state("");
 
 	// Using `String.prototype.length` will increase the count of surrogate pair characters, so use `Intl.Segmenter` instead.

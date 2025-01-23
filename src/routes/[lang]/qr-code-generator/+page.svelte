@@ -2,7 +2,7 @@
 	import QRCode from "qrcode";
 
 	let { data } = $props();
-	const { i18nText } = data;
+	const { i18nText } = $derived(data);
 	const QR_SIZES = [256, 512, 1024] as const;
 	type QRSize = (typeof QR_SIZES)[number];
 

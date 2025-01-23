@@ -1,6 +1,6 @@
 <script lang="ts">
 	let { data } = $props();
-	const { i18nText } = data;
+	const { i18nText } = $derived(data);
 	let inputText = $state("");
 	let items: string[] = [];
 	let selectedItem = $state("");

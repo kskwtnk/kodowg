@@ -2,7 +2,7 @@
 	import { page } from "$app/stores";
 
 	let { data } = $props();
-	const { lang, i18nText, pages } = data;
+	const { lang, i18nText, pages } = $derived(data);
 </script>
 
 <svelte:head>

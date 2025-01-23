@@ -2,7 +2,7 @@
 	import { onDestroy } from "svelte";
 
 	let { data } = $props();
-	const { i18nText } = data;
+	const { i18nText } = $derived(data);
 
 	// Define the possible states of the timer.
 	type TimerState = "ready" | "running" | "paused";

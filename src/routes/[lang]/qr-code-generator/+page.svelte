@@ -63,7 +63,7 @@
 			<textarea
 				id="textfield"
 				placeholder={i18nText.placeholder}
-				class="grow resize-none rounded-md px-3 py-2"
+				class="grow resize-none rounded-md bg-white px-3 py-2"
 				bind:value={inputText}
 			></textarea>
 		</div>
@@ -114,7 +114,7 @@
 		<button
 			onclick={downloadQRCode}
 			disabled={!qrDataUrl}
-			class="rounded-md bg-indigo-600 px-4 py-2 font-bold text-white disabled:bg-slate-400 hover:bg-indigo-700"
+			class="rounded-md bg-indigo-600 px-4 py-2 font-bold text-white hover:bg-indigo-700 disabled:bg-slate-400"
 		>
 			{i18nText.download}
 		</button>

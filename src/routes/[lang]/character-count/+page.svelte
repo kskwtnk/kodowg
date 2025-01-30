@@ -28,7 +28,7 @@
 			id="textarea"
 			rows="12"
 			placeholder={i18nText.placeholder}
-			class="rounded-md px-3 py-2"
+			class="rounded-md bg-white px-3 py-2"
 			bind:value={text}
 		></textarea>
 	</div>

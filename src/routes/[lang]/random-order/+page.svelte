@@ -61,13 +61,13 @@
 				id="textarea"
 				rows="7"
 				placeholder={i18nText.placeholder}
-				class="rounded-md px-3 py-2"
+				class="rounded-md bg-white px-3 py-2"
 				bind:value={inputText}
 				oninput={adjustHeight}
 			></textarea>
 			<button
 				disabled={isSpinning}
-				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white disabled:opacity-50 hover:bg-indigo-800"
+				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 				onclick={startShuffle}
 			>
 				{i18nText.shuffle}

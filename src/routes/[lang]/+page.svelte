@@ -21,7 +21,7 @@
 			{#each pages as path}
 				<a
 					href="./{lang}/{path}"
-					class="flex flex-grow flex-col items-center justify-center gap-y-2 rounded-md bg-slate-200 px-6 py-4 text-xl font-bold transition-colors duration-75 hover:bg-white"
+					class="flex flex-col items-center justify-center gap-y-2 rounded-md bg-slate-200 px-6 py-4 text-xl font-bold transition-colors duration-75 hover:bg-white"
 				>
 					{i18nText.functionName[path]}
 				</a>

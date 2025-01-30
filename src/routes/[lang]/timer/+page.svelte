@@ -138,27 +138,27 @@
 		<div class="grid gap-x-4 gap-y-3 sm:grid-cols-2">
 			{#if timerState === "ready"}
 				<button
-					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white disabled:opacity-50 hover:bg-indigo-800"
+					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 					onclick={startTimer}>{i18nText.start}</button
 				>
 			{/if}
 
 			{#if timerState === "running"}
 				<button
-					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white disabled:opacity-50 hover:bg-indigo-800"
+					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 					onclick={pauseTimer}>{i18nText.pause}</button
 				>
 			{/if}
 
 			{#if timerState === "paused"}
 				<button
-					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white disabled:opacity-50 hover:bg-indigo-800"
+					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 					onclick={countdown}>{i18nText.resume}</button
 				>
 			{/if}
 			<button
 				disabled={timerState === "ready"}
-				class="rounded-md border border-slate-300 bg-white p-2 text-2xl font-bold text-slate-600 disabled:bg-slate-200 disabled:text-slate-400 hover:bg-slate-200 hover:text-slate-800"
+				class="rounded-md border border-slate-300 bg-white p-2 text-2xl font-bold text-slate-600 hover:bg-slate-200 hover:text-slate-800 disabled:bg-slate-200 disabled:text-slate-400"
 				onclick={cancelTimer}>{i18nText.cancel}</button
 			>
 		</div>
@@ -166,6 +166,8 @@
 </div>
 
 <style lang="postcss">
+	@reference "../../../app.css";
+
 	.input {
 		@apply max-w-32 [appearance:textfield] sm:max-w-44 md:max-w-56 lg:max-w-64 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;
 	}

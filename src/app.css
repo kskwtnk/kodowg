@@ -1,4 +1,5 @@
-@tailwind base;
+@import "tailwindcss";
+
 @layer base {
 	button {
 		@apply cursor-pointer;
@@ -13,5 +14,7 @@
 		@apply outline-offset-4 outline-indigo-600;
 	}
 }
-@tailwind components;
-@tailwind utilities;
+
+@utility list-circle {
+	list-style-type: circle;
+}

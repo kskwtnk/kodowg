@@ -1,7 +1,6 @@
 <script lang="ts">
 	import TopPageContent from "$lib/components/TopPageContent.svelte";
 
-	// トップページ用のi18nテキストとページ一覧を定義
 	const i18nText = {
 		description:
 			"Kodowg is a word inspired by the Japanese term “小道具” (which means “props”). We offer you nifty tools for those little tasks in life.",

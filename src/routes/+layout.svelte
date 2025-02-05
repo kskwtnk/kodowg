@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import Footer from "$lib/components/Footer.svelte";
 	import Header from "$lib/components/Header.svelte";
 	import SupportSection from "$lib/components/SupportSection.svelte";
@@ -10,22 +10,22 @@
 	const { i18nText, lang } = $derived(data);
 
 	const pageTitle = $derived(
-		$page.data.i18nText.title
-			? `${$page.data.i18nText.title} - Kodowg`
+		page.data.i18nText.title
+			? `${page.data.i18nText.title} - Kodowg`
 			: "Kodowg",
 	);
 </script>
 
 <MetaTags
 	title={pageTitle}
-	description={$page.data.i18nText.description}
+	description={page.data.i18nText.description}
 	openGraph={{
-		url: $page.url.href,
+		url: page.url.href,
 		title: pageTitle,
-		description: $page.data.i18nText.description,
+		description: page.data.i18nText.description,
 		images: [
 			{
-				url: `${$page.url.origin}/og-image.jpg`,
+				url: `${page.url.origin}/og-image.jpg`,
 				width: 1200,
 				height: 630,
 				alt: "Kodowg",
@@ -38,22 +38,22 @@
 		site: "@kskwtnk",
 		cardType: "summary_large_image",
 		title: pageTitle,
-		description: $page.data.i18nText.description,
-		image: `${$page.url.origin}/og-image.jpg`,
+		description: page.data.i18nText.description,
+		image: `${page.url.origin}/og-image.jpg`,
 		imageAlt: "Kodowg",
 	}}
 	languageAlternates={[
 		{
 			hrefLang: "x-default",
-			href: `${$page.url.origin}${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
+			href: `${page.url.origin}${page.url.pathname.replace(/^\/(en|ja)/, "")}`,
 		},
 		{
 			hrefLang: "ja",
-			href: `${$page.url.origin}/ja${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
+			href: `${page.url.origin}/ja${page.url.pathname.replace(/^\/(en|ja)/, "")}`,
 		},
 		{
 			hrefLang: "en",
-			href: `${$page.url.origin}/en${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
+			href: `${page.url.origin}/en${page.url.pathname.replace(/^\/(en|ja)/, "")}`,
 		},
 	]}
 />
@@ -69,8 +69,8 @@
 		},
 		copyrightYear: "2024",
 		headline: pageTitle,
-		description: $page.data.i18nText.description,
-		url: $page.url.href,
+		description: page.data.i18nText.description,
+		url: page.url.href,
 	}}
 />
 

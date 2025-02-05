@@ -4,7 +4,7 @@
 	import Header from "$lib/components/Header.svelte";
 	import SupportSection from "$lib/components/SupportSection.svelte";
 	import { JsonLd, MetaTags } from "svelte-meta-tags";
-	import "../../app.css";
+	import "../app.css";
 
 	let { data, children } = $props();
 	const { i18nText, lang } = $derived(data);
@@ -43,6 +43,10 @@
 		imageAlt: "Kodowg",
 	}}
 	languageAlternates={[
+		{
+			hrefLang: "x-default",
+			href: `${$page.url.origin}${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,
+		},
 		{
 			hrefLang: "ja",
 			href: `${$page.url.origin}/ja${$page.url.pathname.replace(/^\/(en|ja)/, "")}`,

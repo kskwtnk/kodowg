@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	interface Props {
 		lang: "en" | "ja";
 	}
 	let { lang }: Props = $props();
-	const path = $derived($page.url.pathname.replace(/^\/(ja|en)/, ""));
+	const path = $derived(page.url.pathname.replace(/^\/(ja|en)/, ""));
 </script>
 
 <header class="flex items-center justify-center border-b border-gray-200">

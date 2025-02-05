@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import TopPageContent from "$lib/components/TopPageContent.svelte";
 
 	let { data } = $props();
@@ -8,7 +8,7 @@
 
 <svelte:head>
 	{#if lang === "en"}
-		<link rel="canonical" href="{$page.url.origin}/" />
+		<link rel="canonical" href="{page.url.origin}/" />
 	{/if}
 </svelte:head>
 

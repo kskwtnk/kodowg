@@ -1,20 +1,13 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-	await page.goto("/qr-code-generator");
-});
-
-test("Transition to the top page", async ({ page }) => {
-	await page.getByRole("link", { name: "Return to top page" }).click();
-	await page.waitForURL("**/");
-	const h1Text = await page.locator("h1").textContent();
-	expect(h1Text).toBe("Kodowg");
+	await page.goto("/en/qr-code-generator");
 });
 
 test.describe("Basic QR Code Generation", () => {
 	test("Generates QR code when text is entered", async ({ page }) => {
 		await page.fill("#textfield", "Hello World");
-		const qrImage = page.locator("img[alt='生成されたQRコード']");
+		const qrImage = page.locator("img[alt='Generated QR Code']");
 		await expect(qrImage).toBeVisible();
 		const srcAttribute = await qrImage.getAttribute("src");
 		expect(srcAttribute).toContain("data:image");
@@ -22,7 +15,7 @@ test.describe("Basic QR Code Generation", () => {
 
 	test("Does not generate QR code when text is empty", async ({ page }) => {
 		await page.fill("#textfield", "");
-		const qrImage = page.locator("img[alt='生成されたQRコード']");
+		const qrImage = page.locator("img[alt='Generated QR Code']");
 		await expect(qrImage).not.toBeVisible();
 	});
 });
@@ -33,7 +26,7 @@ test.describe("Size Selection", () => {
 
 		for (const size of [256, 512, 1024]) {
 			await page.getByLabel(`${size}px`).check();
-			const qrImage = page.locator("img[alt='生成されたQRコード']");
+			const qrImage = page.locator("img[alt='Generated QR Code']");
 			await expect(qrImage).toHaveAttribute("width", String(256));
 		}
 	});

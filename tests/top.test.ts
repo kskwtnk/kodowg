@@ -1,20 +1,20 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-	await page.goto("/");
+	await page.goto("/en");
 });
 
 test.describe("Verify link navigates to the correct URL", () => {
 	test("Roulette page", async ({ page }) => {
 		await page.getByRole("link", { name: "Roulette" }).click();
-		await page.waitForURL("**/roulette");
-		expect(page.url()).toContain("/roulette");
+		await page.waitForURL("**/en/roulette");
+		expect(page.url()).toContain("/en/roulette");
 	});
 
 	test("Character count page", async ({ page }) => {
 		await page.getByRole("link", { name: "Character Count" }).click();
-		await page.waitForURL("**/character-count");
-		expect(page.url()).toContain("/character-count");
+		await page.waitForURL("**/en/character-count");
+		expect(page.url()).toContain("/en/character-count");
 	});
 });
 

@@ -128,7 +128,7 @@
 			{#if qrDataUrl}
 				<img
 					src={qrDataUrl}
-					alt="生成されたQRコード"
+					alt={i18nText.generatedQRCode}
 					width={displaySize}
 					height={displaySize}
 				/>

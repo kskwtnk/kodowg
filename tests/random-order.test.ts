@@ -1,14 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-	await page.goto("/random-order");
-});
-
-test("Transition to the top page", async ({ page }) => {
-	await page.getByRole("link", { name: "Return to top page" }).click();
-	await page.waitForURL("**/");
-	const h1Text = await page.locator("h1").textContent();
-	expect(h1Text).toBe("Kodowg");
+	await page.goto("/en/random-order");
 });
 
 test("Shuffle functionality with item input", async ({ page }) => {

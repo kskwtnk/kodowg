@@ -54,7 +54,6 @@
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">{i18nText.title}</h1>
-
 	<div class="flex flex-col gap-y-5 md:col-span-3">
 		<div class="flex grow flex-col gap-y-3">
 			<label for="textfield" class="text-2xl font-bold"
@@ -67,7 +66,6 @@
 				bind:value={inputText}
 			></textarea>
 		</div>
-
 		<fieldset>
 			<legend class="text-2xl font-bold">{i18nText.size}</legend>
 			<div class="mt-1 flex gap-x-4">
@@ -85,7 +83,6 @@
 				{/each}
 			</div>
 		</fieldset>
-
 		<fieldset>
 			<legend class="text-2xl font-bold">{i18nText.fileFormat}</legend>
 			<div class="mt-1 flex gap-x-4">
@@ -119,7 +116,6 @@
 			{i18nText.download}
 		</button>
 	</div>
-
 	<div class="flex flex-col gap-y-3 md:col-span-2">
 		<h2 class="text-2xl font-bold">{i18nText.generatedQRCode}</h2>
 		<div
@@ -134,5 +130,14 @@
 				/>
 			{/if}
 		</div>
+	</div>
+	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
+	<div class="col-span-full grid gap-y-2">
+		<h2 class="text-2xl font-bold">{i18nText.howToUse}</h2>
+		<ol class="list-decimal pl-6">
+			{#each i18nText.steps as step}
+				<li>{step}</li>
+			{/each}
+		</ol>
 	</div>
 </div>

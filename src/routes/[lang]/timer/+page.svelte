@@ -141,16 +141,12 @@
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 					onclick={startTimer}>{i18nText.start}</button
 				>
-			{/if}
-
-			{#if timerState === "running"}
+			{:else if timerState === "running"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 					onclick={pauseTimer}>{i18nText.pause}</button
 				>
-			{/if}
-
-			{#if timerState === "paused"}
+			{:else if timerState === "paused"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 					onclick={countdown}>{i18nText.resume}</button
@@ -162,6 +158,15 @@
 				onclick={cancelTimer}>{i18nText.cancel}</button
 			>
 		</div>
+	</div>
+	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
+	<div class="col-span-full grid gap-y-2">
+		<h2 class="text-2xl font-bold">{i18nText.howToUse}</h2>
+		<ol class="list-decimal pl-6">
+			{#each i18nText.steps as step}
+				<li>{step}</li>
+			{/each}
+		</ol>
 	</div>
 </div>
 

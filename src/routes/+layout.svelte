@@ -1,10 +1,18 @@
 <script lang="ts">
+	import { page } from "$app/state";
 	import Footer from "$lib/components/Footer.svelte";
 	import Header from "$lib/components/Header.svelte";
+	import { MetaTags, deepMerge } from "svelte-meta-tags";
 	import "../app.css";
 
-	let { children } = $props();
+	let { data, children } = $props();
+
+	let metaTags = $derived({
+		...deepMerge(data.baseMetaTags, page.data.pageMetaTags),
+	});
 </script>
+
+<MetaTags {...metaTags} />
 
 <Header />
 <div

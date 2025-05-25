@@ -1,13 +1,10 @@
 const pages = [
-	"",
-	"/character-count",
-	"/qr-code-generator",
-	"/random-order",
-	"/roulette",
-	"/timer",
+	"character-count",
+	"qr-code-generator",
+	"random-order",
+	"roulette",
+	"timer",
 ];
-
-const languages = ["en", "ja"];
 
 export async function GET() {
 	const headers = {
@@ -17,14 +14,9 @@ export async function GET() {
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 			<url><loc>https://kodowg.kskwtnk.com/</loc></url>
-      ${languages
-				.map((lang) =>
-					pages
-						.map(
-							(page) =>
-								`<url><loc>https://kodowg.kskwtnk.com/${lang}${page}</loc></url>`,
-						)
-						.join(""),
+      ${pages
+				.map(
+					(page) => `<url><loc>https://kodowg.kskwtnk.com/${page}</loc></url>`,
 				)
 				.join("")}
     </urlset>`;

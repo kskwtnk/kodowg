@@ -1,25 +1,43 @@
-const i18nText = {
-	en: {
-		support: {
-			description:
-				"This project operates without advertisements, relying solely on user support. While many web services depend on advertising revenue, we are exploring the possibility of a sustainable model through voluntary user support.",
-			cta: "If you find this site useful, we would greatly appreciate your support through",
-			closing: " for your consideration.",
-		},
-	},
-	ja: {
-		support: {
-			description:
-				"このサイトは、広告を掲載せずユーザーの皆様からの支援のみで運営を試みるプロジェクトです。多くのウェブサービスが広告収入に依存する中、ユーザーの皆様の自発的な支援による持続可能なモデルの可能性を探っています。",
-			cta: "もし当サイトが有用だと感じていただけましたら、",
-			closing: "を通じてのご支援をご検討いただければ幸いです。",
-		},
-	},
-};
+import type { MetaTagsProps } from "svelte-meta-tags";
 
-export function load({ params }: { params: { lang: "en" | "ja" } }) {
+export const load = ({ url }) => {
+	const baseMetaTags = Object.freeze({
+		title: "Kodowg",
+		description:
+			"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
+		canonical: new URL(url.pathname, url.origin).href,
+		openGraph: {
+			type: "website",
+			url: new URL(url.pathname, url.origin).href,
+			locale: "ja_JP",
+			title: "Kodowg",
+			description:
+				"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
+			siteName: "Kodowg",
+			images: [
+				{
+					url: `${url.origin}/og-image.jpg`,
+					alt: "Kodowg",
+					width: 1200,
+					height: 630,
+					secureUrl: `${url.origin}/og-image.jpg`,
+					type: "image/jpeg",
+				},
+			],
+		},
+		twitter: {
+			creator: "@kskwtnk",
+			site: "@kskwtnk",
+			cardType: "summary_large_image" as const,
+			title: "Kodowg",
+			description:
+				"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
+			image: `${url.origin}/og-image.jpg`,
+			imageAlt: "Kodowg",
+		},
+	}) satisfies MetaTagsProps;
+
 	return {
-		lang: params.lang ?? "en",
-		i18nText: i18nText[params.lang ?? "en"],
+		baseMetaTags,
 	};
-}
+};

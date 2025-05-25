@@ -69,7 +69,7 @@
 		<fieldset>
 			<legend class="text-2xl font-bold">{i18nText.size}</legend>
 			<div class="mt-1 flex gap-x-4">
-				{#each QR_SIZES as size}
+				{#each QR_SIZES as size (size)}
 					<label class="flex items-center gap-x-2">
 						<input
 							type="radio"
@@ -135,7 +135,7 @@
 	<div class="col-span-full grid gap-y-2">
 		<h2 class="text-2xl font-bold">{i18nText.howToUse}</h2>
 		<ol class="list-decimal pl-6">
-			{#each i18nText.steps as step}
+			{#each i18nText.steps as step (step)}
 				<li>{step}</li>
 			{/each}
 		</ol>

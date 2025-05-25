@@ -43,7 +43,7 @@
 		<div
 			class="grid grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))] gap-4"
 		>
-			{#each pages as path}
+			{#each pages as path (path)}
 				<a
 					href="/{lang}/{path}"
 					class="flex flex-col items-center justify-center gap-y-2 rounded-md bg-slate-200 px-6 py-4 text-xl font-bold transition-colors duration-75 hover:bg-white"

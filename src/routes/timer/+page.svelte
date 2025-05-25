@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { onDestroy } from "svelte";
 
-	let { data } = $props();
-	const { i18nText } = $derived(data);
-
 	// Define the possible states of the timer.
 	type TimerState = "ready" | "running" | "paused";
+
 	// Timer setup variables.
 	let minutes: number = $state(0);
 	let seconds: number = $state(0);
@@ -56,7 +54,6 @@
 	});
 
 	// Calculate display minutes and seconds from total seconds.
-
 	function countdown() {
 		countdownTimerId = setInterval(() => {
 			totalSeconds -= 1;
@@ -89,7 +86,7 @@
 </script>
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 lg:gap-x-8">
-	<h1 class="text-5xl font-bold">{i18nText.title}</h1>
+	<h1 class="text-5xl font-bold">タイマー</h1>
 	<div
 		id="result-display"
 		class="flex content-center justify-center gap-x-12 rounded-md bg-slate-200 py-4 sm:gap-x-16 sm:py-8 md:gap-x-20 md:py-12 lg:gap-x-24 lg:py-16"
@@ -105,7 +102,7 @@
 					class="number input"
 					bind:value={minutes}
 				/>
-				<label for="minutes" class="label">{i18nText.minutes}</label>
+				<label for="minutes" class="label">分</label>
 			</div>
 			<div class="grid place-items-center">
 				<input
@@ -117,20 +114,20 @@
 					class="number input"
 					bind:value={seconds}
 				/>
-				<label for="seconds" class="label">{i18nText.seconds}</label>
+				<label for="seconds" class="label">秒</label>
 			</div>
 		{:else}
 			<div class="grid place-items-center">
-				<span role="timer" aria-label="min" class="number">
+				<span role="timer" aria-label="分" class="number">
 					{displayMinutes}
 				</span>
-				<span class="label">{i18nText.minutes}</span>
+				<span class="label">分</span>
 			</div>
 			<div class="grid place-items-center">
-				<span role="timer" aria-label="sec" class="number">
+				<span role="timer" aria-label="秒" class="number">
 					{displaySeconds}
 				</span>
-				<span class="label">{i18nText.seconds}</span>
+				<span class="label">秒</span>
 			</div>
 		{/if}
 	</div>
@@ -139,39 +136,39 @@
 			{#if timerState === "ready"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					onclick={startTimer}>{i18nText.start}</button
+					onclick={startTimer}>スタート</button
 				>
 			{:else if timerState === "running"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					onclick={pauseTimer}>{i18nText.pause}</button
+					onclick={pauseTimer}>一時停止</button
 				>
 			{:else if timerState === "paused"}
 				<button
 					class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-					onclick={countdown}>{i18nText.resume}</button
+					onclick={countdown}>再開</button
 				>
 			{/if}
 			<button
 				disabled={timerState === "ready"}
 				class="rounded-md border border-slate-300 bg-white p-2 text-2xl font-bold text-slate-600 hover:bg-slate-200 hover:text-slate-800 disabled:bg-slate-200 disabled:text-slate-400"
-				onclick={cancelTimer}>{i18nText.cancel}</button
+				onclick={cancelTimer}>キャンセル</button
 			>
 		</div>
 	</div>
 	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
 	<div class="col-span-full grid gap-y-2">
-		<h2 class="text-2xl font-bold">{i18nText.howToUse}</h2>
+		<h2 class="text-2xl font-bold">使い方</h2>
 		<ol class="list-decimal pl-6">
-			{#each i18nText.steps as step (step)}
-				<li>{step}</li>
-			{/each}
+			<li>計りたい時間（分、秒）を入力します</li>
+			<li>スタートボタンを押すとカウントダウンが始まります</li>
+			<li>一時停止をすると今の秒数のまま止まり、停止を押すと0秒に戻ります</li>
 		</ol>
 	</div>
 </div>
 
 <style lang="postcss">
-	@reference "../../../app.css";
+	@reference "../../app.css";
 
 	.input {
 		@apply max-w-32 [appearance:textfield] sm:max-w-44 md:max-w-56 lg:max-w-64 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;

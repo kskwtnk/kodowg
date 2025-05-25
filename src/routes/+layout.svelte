@@ -1,88 +1,36 @@
 <script lang="ts">
-	import { page } from "$app/state";
 	import Footer from "$lib/components/Footer.svelte";
 	import Header from "$lib/components/Header.svelte";
-	import SupportSection from "$lib/components/SupportSection.svelte";
-	import { JsonLd, MetaTags } from "svelte-meta-tags";
 	import "../app.css";
 
-	let { data, children } = $props();
-	const { i18nText, lang } = $derived(data);
-
-	const pageTitle = $derived(
-		page.data.i18nText.title
-			? `${page.data.i18nText.title} - Kodowg`
-			: "Kodowg",
-	);
+	let { children } = $props();
 </script>
 
-<MetaTags
-	title={pageTitle}
-	description={page.data.i18nText.description}
-	openGraph={{
-		url: page.url.href,
-		title: pageTitle,
-		description: page.data.i18nText.description,
-		images: [
-			{
-				url: `${page.url.origin}/og-image.jpg`,
-				width: 1200,
-				height: 630,
-				alt: "Kodowg",
-			},
-		],
-		siteName: "Kodowg",
-	}}
-	twitter={{
-		creator: "@kskwtnk",
-		site: "@kskwtnk",
-		cardType: "summary_large_image",
-		title: pageTitle,
-		description: page.data.i18nText.description,
-		image: `${page.url.origin}/og-image.jpg`,
-		imageAlt: "Kodowg",
-	}}
-	languageAlternates={[
-		{
-			hrefLang: "x-default",
-			href: `${page.url.origin}${page.url.pathname.replace(/^\/(en|ja)/, "")}`,
-		},
-		{
-			hrefLang: "ja",
-			href: `${page.url.origin}/ja${page.url.pathname.replace(/^\/(en|ja)/, "")}`,
-		},
-		{
-			hrefLang: "en",
-			href: `${page.url.origin}/en${page.url.pathname.replace(/^\/(en|ja)/, "")}`,
-		},
-	]}
-/>
-
-<JsonLd
-	schema={{
-		"@type": "WebSite",
-		name: "Kodowg",
-		inLanguage: lang,
-		author: {
-			"@type": "Person",
-			name: "Keisuke Watanuki",
-		},
-		copyrightYear: "2024",
-		headline: pageTitle,
-		description: page.data.i18nText.description,
-		url: page.url.href,
-	}}
-/>
-
-<Header {lang} />
+<Header />
 <div
 	class="mx-auto flex w-full max-w-screen-lg grow flex-col gap-y-6 px-4 py-6"
 >
 	<main>
 		{@render children()}
 	</main>
-	<aside class="mt-auto">
-		<SupportSection {i18nText} />
+	<aside
+		class="mt-auto grid gap-y-3 rounded-md border border-slate-200 bg-slate-50 p-4 text-base text-slate-700"
+	>
+		<p>
+			このサイトは、広告を掲載せずユーザーの皆様からの支援のみで運営を試みるプロジェクトです。多くのウェブサービスが広告収入に依存する中、ユーザーの皆様の自発的な支援による持続可能なモデルの可能性を探っています。
+		</p>
+		<p>
+			もし当サイトが有用だと感じていただけましたら
+			<a
+				href="https://github.com/sponsors/kskwtnk"
+				class="underline hover:text-indigo-600"
+				target="_blank"
+				rel="nofollow"
+			>
+				GitHub Sponsors
+			</a>
+			を通じてご支援いただければ幸いです。
+		</p>
 	</aside>
 </div>
 <Footer />

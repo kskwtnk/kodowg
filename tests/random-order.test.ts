@@ -1,12 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-	await page.goto("/en/random-order");
+	await page.goto("/random-order");
 });
 
 test("Shuffle functionality with item input", async ({ page }) => {
 	await page.fill("#textarea", "Item 1\nItem 2\nItem 3");
-	await page.getByRole("button", { name: "Shuffle" }).click();
+	await page.getByRole("button", { name: "シャッフル" }).click();
 	// Wait until the shuffle finishes turning.
 	await page.waitForTimeout(3000);
 	const resultItems = await page
@@ -21,16 +21,16 @@ test("Shuffle functionality with item input", async ({ page }) => {
 test("No action is taken if input is empty and the Shuffle button is clicked", async ({
 	page,
 }) => {
-	await page.getByRole("button", { name: "Shuffle" }).click();
+	await page.getByRole("button", { name: "シャッフル" }).click();
 	const waitingText = await page.locator("#result-display").textContent();
-	expect(waitingText?.trim()).toBe("The order is...");
+	expect(waitingText?.trim()).toBe("順番は……");
 });
 
 test("The start button is disabled while the roulette is spinning", async ({
 	page,
 }) => {
 	await page.fill("#textarea", "Item 1\nItem 2\nItem 3");
-	const button = page.getByRole("button", { name: "Shuffle" });
+	const button = page.getByRole("button", { name: "シャッフル" });
 	await button.click();
 	const isDisabled = await button.isDisabled();
 	expect(isDisabled).toBeTruthy();

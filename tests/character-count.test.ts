@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-	await page.goto("/en/character-count");
+	await page.goto("/character-count");
 });
 
 test("Counting the number of characters excluding line breaks", async ({

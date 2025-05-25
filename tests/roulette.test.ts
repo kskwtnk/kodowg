@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test.beforeEach(async ({ page }) => {
-	await page.goto("/en/roulette");
+	await page.goto("/roulette");
 });
 
 test("Roulette functionality with item input", async ({ page }) => {

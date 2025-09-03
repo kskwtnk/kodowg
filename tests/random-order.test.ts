@@ -34,7 +34,6 @@ test("The start button is disabled while the roulette is spinning", async ({
 	await button.click();
 	const isDisabled = await button.isDisabled();
 	expect(isDisabled).toBeTruthy();
-	await page.click("button:has-text('シャッフル')"); // Click again to stop the spinning
 	// Wait until the roulette finishes turning.
 	await page.waitForTimeout(3000);
 	const isEnabledAfterSpin = await button.isEnabled();

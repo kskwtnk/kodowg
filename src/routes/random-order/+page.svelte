@@ -8,7 +8,10 @@
 		if (inputText.trim() === "") return;
 
 		isSpinning = true;
-		items = inputText.split("\n").filter((line) => line.trim() !== "");
+		items = inputText
+			.split("\n")
+			.map((line) => line.trim())
+			.filter((line) => line !== "");
 
 		let spinCount = Math.floor(Math.random() * 10) + 20;
 		let tempArray = [...items];
@@ -72,7 +75,7 @@
 		<div id="result-display" class="grid rounded-md bg-slate-200 p-4">
 			{#if shuffledItems.length > 0}
 				<ol class="list-decimal pl-8">
-					{#each shuffledItems as item (item)}
+					{#each shuffledItems as item, index (index)}
 						<li class="my-2 text-2xl font-bold">{item}</li>
 					{/each}
 				</ol>

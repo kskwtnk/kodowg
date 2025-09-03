@@ -1,0 +1,11 @@
+name: 'Setup Environment'
+description: 'Checks out repository, sets up tools, and installs dependencies'
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup tools from .mise.toml
+      uses: jdx/mise-action@v2
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash

@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+
+      - name: Run lint
+        run: pnpm lint
+
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+
+      - name: Run svelte-kit sync
+        run: pnpm svelte-kit sync
+
+      - name: Run check
+        run: pnpm check
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Environment
+        uses: ./.github/actions/setup
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install
+
+      - name: Run tests
+        run: pnpm test

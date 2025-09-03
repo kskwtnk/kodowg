@@ -88,3 +88,59 @@ test("Timer finishes", async ({ page }) => {
 	expect(minutes).toBe("0");
 	expect(seconds).toBe("0");
 });
+
+test("Timer returns to initial state after finishing", async ({ page }) => {
+	await page.getByRole("spinbutton", { name: "分" }).fill("0");
+	await page.getByRole("spinbutton", { name: "秒" }).fill("1");
+	await page.getByRole("button", { name: "スタート" }).click();
+	await page.waitForTimeout(1500);
+	// Check if input fields are visible again
+	await expect(page.getByRole("spinbutton", { name: "分" })).toBeVisible();
+	await expect(page.getByRole("spinbutton", { name: "秒" })).toBeVisible();
+	// Check if start button is enabled and cancel button is disabled
+	await expect(page.getByRole("button", { name: "スタート" })).toBeEnabled();
+	await expect(page.getByRole("button", { name: "キャンセル" })).toBeDisabled();
+});
+
+test("Timer does not start with 0 minutes and 0 seconds", async ({ page }) => {
+	await page.getByRole("spinbutton", { name: "分" }).fill("0");
+	await page.getByRole("spinbutton", { name: "秒" }).fill("0");
+	await page.getByRole("button", { name: "スタート" }).click();
+	// Wait a short moment to ensure timer doesn't start
+	await page.waitForTimeout(500);
+	// Check if input fields are still visible (meaning timer didn't switch to display mode)
+	await expect(page.getByRole("spinbutton", { name: "分" })).toBeVisible();
+	await expect(page.getByRole("spinbutton", { name: "秒" })).toBeVisible();
+});
+
+test("Display shows correct minute and second rollover", async ({ page }) => {
+	// Test 59 seconds -> 0 minutes 59 seconds
+	await page.getByRole("spinbutton", { name: "分" }).fill("0");
+	await page.getByRole("spinbutton", { name: "秒" }).fill("59");
+	await page.getByRole("button", { name: "スタート" }).click();
+	await page.waitForTimeout(500);
+	expect(await page.getByRole("timer", { name: "分" }).textContent()).toBe("0");
+	expect(await page.getByRole("timer", { name: "秒" }).textContent()).toBe(
+		"59",
+	);
+
+	// Test 60 seconds -> 1 minute 0 seconds
+	await page.getByRole("button", { name: "一時停止" }).click(); // Pause current timer
+	await page.getByRole("button", { name: "キャンセル" }).click(); // Cancel to return to ready state
+	await page.getByRole("spinbutton", { name: "分" }).fill("1");
+	await page.getByRole("spinbutton", { name: "秒" }).fill("0");
+	await page.getByRole("button", { name: "スタート" }).click();
+	await page.waitForTimeout(500);
+	expect(await page.getByRole("timer", { name: "分" }).textContent()).toBe("1");
+	expect(await page.getByRole("timer", { name: "秒" }).textContent()).toBe("0");
+
+	// Test 1 minute 1 second -> 1 minute 1 second
+	await page.getByRole("button", { name: "一時停止" }).click(); // Pause current timer
+	await page.getByRole("button", { name: "キャンセル" }).click(); // Cancel to return to ready state
+	await page.getByRole("spinbutton", { name: "分" }).fill("1");
+	await page.getByRole("spinbutton", { name: "秒" }).fill("1");
+	await page.getByRole("button", { name: "スタート" }).click();
+	await page.waitForTimeout(500);
+	expect(await page.getByRole("timer", { name: "分" }).textContent()).toBe("1");
+	expect(await page.getByRole("timer", { name: "秒" }).textContent()).toBe("1");
+});

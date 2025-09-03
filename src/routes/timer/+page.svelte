@@ -40,11 +40,6 @@
 		}
 	});
 
-	// Calculate total seconds whenever minutes or seconds input changes.
-	$effect(() => {
-		totalSeconds = (minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
-	});
-
 	// Stop the timer and reset the state if totalSeconds is 0 or less.
 	$effect(() => {
 		if (totalSeconds < 0) {
@@ -62,10 +57,13 @@
 	}
 
 	function startTimer() {
-		if (totalSeconds < 0) {
-			initialSeconds = (minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
-			totalSeconds = initialSeconds;
+		const newTotalSeconds =
+			(minutes ? minutes * 60 : 0) + (seconds ? seconds : 0);
+		if (newTotalSeconds <= 0) {
+			return;
 		}
+		totalSeconds = newTotalSeconds;
+		initialSeconds = newTotalSeconds;
 		countdown();
 	}
 

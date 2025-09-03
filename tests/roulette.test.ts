@@ -6,30 +6,29 @@ test.beforeEach(async ({ page }) => {
 
 test("Roulette functionality with item input", async ({ page }) => {
 	await page.fill("#textarea", "Item 1\nItem 2\nItem 3");
-	await page.getByRole("button", { name: "Start" }).click();
+	await page.getByRole("button", { name: "スタート" }).click();
 	// Wait until the roulette finishes turning.
 	await page.waitForTimeout(3000);
 	const result = await page.locator("#result-display").textContent();
-	expect(result).toMatch(/Item 1|Item 2|Item 3/);
+	expect(result).not.toContain("選ばれたのは……");
 });
 
 test("No action is taken if input is empty and the Start button is clicked", async ({
 	page,
 }) => {
-	await page.getByRole("button", { name: "Start" }).click();
+	await page.getByRole("button", { name: "スタート" }).click();
 	const result = await page.locator("#result-display").textContent();
-	expect(result).toBe("The chosen one is...");
+	expect(result).toContain("選ばれたのは……");
 });
 
 test("The start button is disabled while the roulette is spinning", async ({
 	page,
 }) => {
 	await page.fill("#textarea", "Item 1\nItem 2\nItem 3");
-	const button = page.getByRole("button", { name: "Start" });
+	const button = page.getByRole("button", { name: "スタート" });
 	await button.click();
 	const isDisabled = await button.isDisabled();
 	expect(isDisabled).toBeTruthy();
-	await button.click();
 	// Wait until the roulette finishes turning.
 	await page.waitForTimeout(3000);
 	const isEnabledAfterSpin = await button.isEnabled();

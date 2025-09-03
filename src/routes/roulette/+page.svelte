@@ -7,8 +7,10 @@
 	function startRoulette() {
 		if (inputText.trim() === "") return;
 
-		items = inputText.split("\n").filter((line) => line.trim() !== "");
-		selectedItem = selectedItem ? selectedItem : "";
+		items = inputText
+			.split("\n")
+			.map((line) => line.trim())
+			.filter((line) => line !== "");
 		isSpinning = true;
 
 		let spinCount = Math.floor(Math.random() * 10) + 20;
@@ -63,7 +65,7 @@
 		<h2 class="text-2xl font-bold">結果</h2>
 		<div id="result-display" class="grid min-h-24 rounded-md bg-slate-200 p-4">
 			<p class="self-center text-center font-bold">
-				{#if selectedItem}
+				{#if selectedItem && selectedItem.trim() !== ""}
 					<span class="text-6xl md:text-8xl">{selectedItem}</span>
 				{:else}
 					<span class="text-3xl text-slate-500 md:text-4xl">選ばれたのは……</span

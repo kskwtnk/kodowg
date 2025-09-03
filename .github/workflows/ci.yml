@@ -10,6 +10,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Setup Environment
         uses: ./.github/actions/setup
 
@@ -19,8 +21,13 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Setup Environment
         uses: ./.github/actions/setup
+
+      - name: Run svelte-kit sync
+        run: pnpm svelte-kit sync
 
       - name: Run check
         run: pnpm check
@@ -28,8 +35,13 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
       - name: Setup Environment
         uses: ./.github/actions/setup
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install
 
       - name: Run tests
         run: pnpm test

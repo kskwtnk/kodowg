@@ -1,11 +1,13 @@
 <script lang="ts">
-	const functions = {
-		"character-count": "文字数カウント",
-		"qr-code-generator": "QRコードジェネレーター",
-		"random-order": "ランダム並び替え",
-		roulette: "ルーレット",
-		timer: "タイマー",
-	} as const;
+	import { resolve } from "$app/paths";
+
+	const tools = [
+		{ href: "/character-count", name: "文字数カウント" },
+		{ href: "/qr-code-generator", name: "QRコードジェネレーター" },
+		{ href: "/random-order", name: "ランダム並び替え" },
+		{ href: "/roulette", name: "ルーレット" },
+		{ href: "/timer", name: "タイマー" },
+	] as const;
 </script>
 
 <div class="grid grid-cols-1 gap-y-9">
@@ -19,12 +21,12 @@
 		<div
 			class="grid grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))] gap-4"
 		>
-			{#each Object.entries(functions) as [key, value] (key)}
+			{#each tools as tool (tool.href)}
 				<a
-					href="/{key}"
+					href={resolve(tool.href)}
 					class="flex flex-col items-center justify-center gap-y-2 rounded-md bg-slate-200 px-6 py-4 text-xl font-bold transition-colors duration-75 hover:bg-white"
 				>
-					{value}
+					{tool.name}
 				</a>
 			{/each}
 		</div>

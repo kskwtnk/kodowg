@@ -166,7 +166,7 @@
 </div>
 
 <style lang="postcss">
-	@reference "../../app.css";
+	@reference "tailwindcss";
 
 	.input {
 		@apply max-w-32 [appearance:textfield] sm:max-w-44 md:max-w-56 lg:max-w-64 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none;

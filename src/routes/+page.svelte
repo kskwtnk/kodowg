@@ -18,9 +18,7 @@
 				Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。
 			</p>
 		</div>
-		<div
-			class="grid grid-cols-[repeat(auto-fit,minmax(theme(spacing.80),1fr))] gap-4"
-		>
+		<div class="grid gap-4" data-grid>
 			{#each tools as tool (tool.href)}
 				<a
 					href={resolve(tool.href)}
@@ -49,3 +47,11 @@
 		</ul>
 	</div>
 </div>
+
+<style lang="postcss">
+	@reference "tailwindcss";
+
+	[data-grid] {
+		grid-template-columns: repeat(auto-fit, minmax(--spacing(80), 1fr));
+	}
+</style>

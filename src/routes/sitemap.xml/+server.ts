@@ -1,5 +1,6 @@
 const pages = [
 	"character-count",
+	"group-divider",
 	"qr-code-generator",
 	"random-order",
 	"roulette",

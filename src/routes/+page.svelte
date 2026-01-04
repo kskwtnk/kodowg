@@ -3,6 +3,7 @@
 
 	const tools = [
 		{ href: "/character-count", name: "文字数カウント" },
+		{ href: "/group-divider", name: "グループ分け" },
 		{ href: "/qr-code-generator", name: "QRコードジェネレーター" },
 		{ href: "/random-order", name: "ランダム並び替え" },
 		{ href: "/roulette", name: "ルーレット" },

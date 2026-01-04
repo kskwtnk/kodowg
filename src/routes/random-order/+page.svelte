@@ -50,9 +50,9 @@
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">ランダム並び替え</h1>
-	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-2">
-		<label for="textarea" class="text-2xl font-bold"> 候補リスト</label>
-		<div class="grid gap-y-5">
+	<div class="grid auto-rows-max gap-y-5 md:col-span-2">
+		<div class="grid auto-rows-max gap-y-3">
+			<label for="textarea" class="text-2xl font-bold">候補リスト</label>
 			<textarea
 				id="textarea"
 				rows="7"
@@ -61,16 +61,16 @@
 				bind:value={inputText}
 				oninput={adjustHeight}
 			></textarea>
-			<button
-				disabled={isSpinning}
-				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
-				onclick={startShuffle}
-			>
-				シャッフル
-			</button>
 		</div>
+		<button
+			disabled={isSpinning}
+			class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
+			onclick={startShuffle}
+		>
+			シャッフル
+		</button>
 	</div>
-	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
+	<div class="grid grid-rows-[auto_1fr] gap-y-3 md:col-span-3">
 		<h2 class="text-2xl font-bold">結果</h2>
 		<div id="result-display" class="grid rounded-md bg-slate-200 p-4">
 			{#if shuffledItems.length > 0}

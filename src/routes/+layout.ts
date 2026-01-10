@@ -1,39 +1,43 @@
 import type { MetaTagsProps } from "svelte-meta-tags";
+import type { LayoutLoad } from "./$types";
 
-export const load = ({ url }) => {
+const TITLE = "Kodowg";
+const DESCRIPTION =
+	"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。";
+const OG_IMAGE_PATH = "/og-image.jpg";
+const TWITTER_HANDLE = "@kskwtnk";
+
+export const load: LayoutLoad = ({ url }) => {
 	const baseMetaTags = Object.freeze({
-		title: "Kodowg",
-		description:
-			"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
+		title: TITLE,
+		description: DESCRIPTION,
 		canonical: new URL(url.pathname, url.origin).href,
 		openGraph: {
 			type: "website",
 			url: new URL(url.pathname, url.origin).href,
 			locale: "ja_JP",
-			title: "Kodowg",
-			description:
-				"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
-			siteName: "Kodowg",
+			title: TITLE,
+			description: DESCRIPTION,
+			siteName: TITLE,
 			images: [
 				{
-					url: `${url.origin}/og-image.jpg`,
-					alt: "Kodowg",
+					url: `${url.origin}${OG_IMAGE_PATH}`,
+					alt: TITLE,
 					width: 1200,
 					height: 630,
-					secureUrl: `${url.origin}/og-image.jpg`,
+					secureUrl: `${url.origin}${OG_IMAGE_PATH}`,
 					type: "image/jpeg",
 				},
 			],
 		},
 		twitter: {
-			creator: "@kskwtnk",
-			site: "@kskwtnk",
+			creator: TWITTER_HANDLE,
+			site: TWITTER_HANDLE,
 			cardType: "summary_large_image" as const,
-			title: "Kodowg",
-			description:
-				"Kodowgは日本語の「小道具」にインスパイアされた言葉です。日常のちょっとしたタスクに便利なツールを提供します。",
-			image: `${url.origin}/og-image.jpg`,
-			imageAlt: "Kodowg",
+			title: TITLE,
+			description: DESCRIPTION,
+			image: `${url.origin}${OG_IMAGE_PATH}`,
+			imageAlt: TITLE,
 		},
 	}) satisfies MetaTagsProps;
 

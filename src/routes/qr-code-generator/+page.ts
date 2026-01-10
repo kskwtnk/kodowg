@@ -1,19 +1,20 @@
 import type { MetaTagsProps } from "svelte-meta-tags";
 
+const TITLE = "QRコードジェネレーター - Kodowg";
+const DESCRIPTION =
+	"Web上で使える無料のQRコードを生成ツール。QRコードをPNGまたはSVGファイルとしてダウンロードできます。サーバー上にデータを保存しないため安心して利用できます。";
+
 export const load = () => {
 	const pageMetaTags = Object.freeze({
-		title: "QRコードジェネレーター - Kodowg",
-		description:
-			"Web上で使える無料のQRコードを生成ツール。QRコードをPNGまたはSVGファイルとしてダウンロードできます。サーバー上にデータを保存しないため安心して利用できます。",
+		title: TITLE,
+		description: DESCRIPTION,
 		openGraph: {
-			title: "QRコードジェネレーター - Kodowg",
-			description:
-				"Web上で使える無料のQRコードを生成ツール。QRコードをPNGまたはSVGファイルとしてダウンロードできます。サーバー上にデータを保存しないため安心して利用できます。",
+			title: TITLE,
+			description: DESCRIPTION,
 		},
 		twitter: {
-			title: "QRコードジェネレーター - Kodowg",
-			description:
-				"Web上で使える無料のQRコードを生成ツール。QRコードをPNGまたはSVGファイルとしてダウンロードできます。サーバー上にデータを保存しないため安心して利用できます。",
+			title: TITLE,
+			description: DESCRIPTION,
 		},
 	}) satisfies MetaTagsProps;
 

@@ -11,6 +11,7 @@
     "test": "svelte-kit sync && pnpm build && playwright test"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.4.14",
     "@playwright/test": "^1.57.0",
     "@sveltejs/adapter-cloudflare": "^7.0.3",
     "@sveltejs/kit": "^2.49.2",

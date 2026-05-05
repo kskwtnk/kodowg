@@ -1,53 +1,53 @@
 <script lang="ts">
-	import QRCode from "qrcode";
+import QRCode from "qrcode";
 
-	const QR_SIZES = [256, 512, 1024] as const;
-	type QRSize = (typeof QR_SIZES)[number];
+const QR_SIZES = [256, 512, 1024] as const;
+type QRSize = (typeof QR_SIZES)[number];
 
-	let inputText = $state("");
-	let qrSize = $state<QRSize>(QR_SIZES[0]);
-	let qrDataUrl = $state("");
-	let displaySize = QR_SIZES[0];
-	let fileFormat = $state<"png" | "svg">("png");
+let inputText = $state("");
+let qrSize = $state<QRSize>(QR_SIZES[0]);
+let qrDataUrl = $state("");
+let displaySize = QR_SIZES[0];
+let fileFormat = $state<"png" | "svg">("png");
 
-	async function generateQRCode() {
-		if (!inputText) {
-			qrDataUrl = "";
-			return;
-		}
+async function generateQRCode() {
+	if (!inputText) {
+		qrDataUrl = "";
+		return;
+	}
 
-		try {
-			if (fileFormat === "png") {
-				qrDataUrl = await QRCode.toDataURL(inputText, {
-					width: qrSize,
+	try {
+		if (fileFormat === "png") {
+			qrDataUrl = await QRCode.toDataURL(inputText, {
+				margin: 1,
+				width: qrSize,
+			});
+		} else {
+			qrDataUrl = `data:image/svg+xml;utf8,${encodeURIComponent(
+				await QRCode.toString(inputText, {
 					margin: 1,
-				});
-			} else {
-				qrDataUrl = `data:image/svg+xml;utf8,${encodeURIComponent(
-					await QRCode.toString(inputText, {
-						type: "svg",
-						width: qrSize,
-						margin: 1,
-					}),
-				)}`;
-			}
-		} catch (err) {
-			console.error(err);
+					type: "svg",
+					width: qrSize,
+				}),
+			)}`;
 		}
+	} catch (err) {
+		console.error(err);
 	}
+}
 
-	function downloadQRCode() {
-		const link = document.createElement("a");
-		link.download = `qrcode.${fileFormat}`;
-		link.href = qrDataUrl;
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	}
+function downloadQRCode() {
+	const link = document.createElement("a");
+	link.download = `qrcode.${fileFormat}`;
+	link.href = qrDataUrl;
+	document.body.appendChild(link);
+	link.click();
+	document.body.removeChild(link);
+}
 
-	$effect(() => {
-		generateQRCode();
-	});
+$effect(() => {
+	generateQRCode();
+});
 </script>
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
@@ -73,7 +73,7 @@
 							value={size}
 							bind:group={qrSize}
 							class="accent-indigo-600"
-						/>
+						>
 						{size}px
 					</label>
 				{/each}
@@ -89,7 +89,7 @@
 						value="png"
 						bind:group={fileFormat}
 						class="accent-indigo-600"
-					/>
+					>
 					PNG
 				</label>
 				<label class="flex items-center gap-x-2">
@@ -99,7 +99,7 @@
 						value="svg"
 						bind:group={fileFormat}
 						class="accent-indigo-600"
-					/>
+					>
 					SVG
 				</label>
 			</div>
@@ -108,6 +108,7 @@
 			onclick={downloadQRCode}
 			disabled={!qrDataUrl}
 			class="rounded-md bg-indigo-600 px-4 py-2 font-bold text-white hover:bg-indigo-700 disabled:bg-slate-400"
+			type="button"
 		>
 			ダウンロード
 		</button>
@@ -123,11 +124,11 @@
 					alt="生成されたQRコード"
 					width={displaySize}
 					height={displaySize}
-				/>
+				>
 			{/if}
 		</div>
 	</div>
-	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
+	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white">
 	<div class="col-span-full grid gap-y-2">
 		<h2 class="text-2xl font-bold">使い方</h2>
 		<ol class="list-decimal pl-6">

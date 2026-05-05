@@ -6,15 +6,15 @@ const DESCRIPTION =
 
 export const load = () => {
 	const pageMetaTags = Object.freeze({
-		title: TITLE,
 		description: DESCRIPTION,
 		openGraph: {
-			title: TITLE,
 			description: DESCRIPTION,
+			title: TITLE,
 		},
+		title: TITLE,
 		twitter: {
-			title: TITLE,
 			description: DESCRIPTION,
+			title: TITLE,
 		},
 	}) satisfies MetaTagsProps;
 

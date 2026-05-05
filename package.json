@@ -1,31 +1,35 @@
 {
-  "name": "kodowg",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test": "svelte-kit sync && pnpm build && playwright test"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.4.14",
-    "@playwright/test": "^1.57.0",
-    "@sveltejs/adapter-cloudflare": "^7.0.3",
-    "@sveltejs/kit": "^2.49.2",
-    "@sveltejs/vite-plugin-svelte": "^6.2.1",
-    "@tailwindcss/vite": "^4.0.1",
-    "@types/qrcode": "^1.5.5",
-    "qrcode": "^1.5.4",
-    "svelte": "^5.33.11",
-    "svelte-check": "^4.2.1",
-    "svelte-meta-tags": "^4.3.0",
-    "tailwindcss": "^4.0.1",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.0",
-    "wrangler": "^4.54.0"
-  },
-  "type": "module"
+	"devDependencies": {
+		"@biomejs/biome": "2.4.14",
+		"@playwright/test": "^1.57.0",
+		"@sveltejs/adapter-cloudflare": "^7.0.3",
+		"@sveltejs/kit": "^2.49.2",
+		"@sveltejs/vite-plugin-svelte": "^6.2.1",
+		"@tailwindcss/vite": "^4.0.1",
+		"@types/qrcode": "^1.5.5",
+		"qrcode": "^1.5.4",
+		"svelte": "^5.33.11",
+		"svelte-check": "^4.2.1",
+		"svelte-meta-tags": "^4.3.0",
+		"tailwindcss": "^4.0.1",
+		"typescript": "^5.9.3",
+		"vite": "^7.3.0",
+		"wrangler": "^4.54.0"
+	},
+	"name": "kodowg",
+	"private": true,
+	"scripts": {
+		"build": "vite build",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
+		"format": "biome format .",
+		"format:write": "biome format --write .",
+		"lint": "biome lint .",
+		"lint:write": "biome lint --write .",
+		"preview": "vite preview",
+		"test": "svelte-kit sync && pnpm build && playwright test"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }

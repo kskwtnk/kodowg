@@ -1,25 +1,26 @@
 <script lang="ts">
-	let text = $state("");
+let text = $state("");
 
-	// Using `String.prototype.length` will increase the count of surrogate pair characters, so use `Intl.Segmenter` instead.
-	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
-	let segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
+// Using `String.prototype.length` will increase the count of surrogate pair characters, so use `Intl.Segmenter` instead.
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter
+let segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
 
-	let lengthWithoutNewlines = $derived(
-		text.includes("\n")
-			? [...segmenter.segment(text.replace(/\n/g, ""))].length
-			: [...segmenter.segment(text)].length,
-	);
+let lengthWithoutNewlines = $derived(
+	text.includes("\n")
+		? [...segmenter.segment(text.replace(/\n/g, ""))].length
+		: [...segmenter.segment(text)].length,
+);
 
-	let formattedLengthWithoutNewlines = $derived(
-		new Intl.NumberFormat("en-US").format(lengthWithoutNewlines),
-	);
+let formattedLengthWithoutNewlines = $derived(
+	new Intl.NumberFormat("en-US").format(lengthWithoutNewlines),
+);
 </script>
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
 	<h1 class="col-span-full text-5xl font-bold">文字数カウント</h1>
 	<div class="row-span-2 grid grid-rows-subgrid gap-y-3 md:col-span-3">
-		<label for="textarea" class="text-2xl font-bold">カウントするテキスト</label
+		<label for="textarea" class="text-2xl font-bold"
+			>カウントするテキスト</label
 		>
 		<textarea
 			id="textarea"
@@ -40,7 +41,7 @@
 			>
 		</div>
 	</div>
-	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
+	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white">
 	<div class="col-span-full grid gap-y-2">
 		<h2 class="text-2xl font-bold">使い方</h2>
 		<ol class="list-decimal pl-6">

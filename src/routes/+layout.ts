@@ -9,35 +9,35 @@ const TWITTER_HANDLE = "@kskwtnk";
 
 export const load: LayoutLoad = ({ url }) => {
 	const baseMetaTags = Object.freeze({
-		title: TITLE,
-		description: DESCRIPTION,
 		canonical: new URL(url.pathname, url.origin).href,
+		description: DESCRIPTION,
 		openGraph: {
-			type: "website",
-			url: new URL(url.pathname, url.origin).href,
-			locale: "ja_JP",
-			title: TITLE,
 			description: DESCRIPTION,
-			siteName: TITLE,
 			images: [
 				{
-					url: `${url.origin}${OG_IMAGE_PATH}`,
 					alt: TITLE,
-					width: 1200,
 					height: 630,
 					secureUrl: `${url.origin}${OG_IMAGE_PATH}`,
 					type: "image/jpeg",
+					url: `${url.origin}${OG_IMAGE_PATH}`,
+					width: 1200,
 				},
 			],
-		},
-		twitter: {
-			creator: TWITTER_HANDLE,
-			site: TWITTER_HANDLE,
-			cardType: "summary_large_image" as const,
+			locale: "ja_JP",
+			siteName: TITLE,
 			title: TITLE,
+			type: "website",
+			url: new URL(url.pathname, url.origin).href,
+		},
+		title: TITLE,
+		twitter: {
+			cardType: "summary_large_image" as const,
+			creator: TWITTER_HANDLE,
 			description: DESCRIPTION,
 			image: `${url.origin}${OG_IMAGE_PATH}`,
 			imageAlt: TITLE,
+			site: TWITTER_HANDLE,
+			title: TITLE,
 		},
 	}) satisfies MetaTagsProps;
 

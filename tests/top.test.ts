@@ -43,13 +43,13 @@ test.describe("Verify link navigates to the correct URL", () => {
 
 test.describe("Responsive design testing", () => {
 	test("Desktop view", async ({ page }) => {
-		await page.setViewportSize({ width: 1280, height: 720 });
+		await page.setViewportSize({ height: 720, width: 1280 });
 		const h1Text = await page.getByRole("heading", { level: 1 }).textContent();
 		expect(h1Text).toBe("Kodowg");
 	});
 
 	test("Mobile view", async ({ page }) => {
-		await page.setViewportSize({ width: 360, height: 800 });
+		await page.setViewportSize({ height: 800, width: 360 });
 		const h1Text = await page.getByRole("heading", { level: 1 }).textContent();
 		expect(h1Text).toBe("Kodowg");
 	});

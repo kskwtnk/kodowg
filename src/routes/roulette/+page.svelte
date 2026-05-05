@@ -1,42 +1,42 @@
 <script lang="ts">
-	let inputText = $state("");
-	let items: string[] = [];
-	let selectedItem = $state("");
-	let isSpinning = $state(false);
+let inputText = $state("");
+let items: string[] = [];
+let selectedItem = $state("");
+let isSpinning = $state(false);
 
-	function startRoulette() {
-		if (inputText.trim() === "") return;
+function startRoulette() {
+	if (inputText.trim() === "") return;
 
-		items = inputText
-			.split("\n")
-			.map((line) => line.trim())
-			.filter((line) => line !== "");
-		isSpinning = true;
+	items = inputText
+		.split("\n")
+		.map((line) => line.trim())
+		.filter((line) => line !== "");
+	isSpinning = true;
 
-		let spinCount = Math.floor(Math.random() * 10) + 20;
-		let currentIndex = 0;
+	let spinCount = Math.floor(Math.random() * 10) + 20;
+	let currentIndex = 0;
 
-		const interval = setInterval(() => {
-			selectedItem = items[currentIndex];
-			currentIndex = (currentIndex + 1) % items.length;
-			spinCount--;
+	const interval = setInterval(() => {
+		selectedItem = items[currentIndex];
+		currentIndex = (currentIndex + 1) % items.length;
+		spinCount--;
 
-			if (spinCount <= 0) {
-				clearInterval(interval);
-				isSpinning = false;
-			}
-		}, 100);
-	}
+		if (spinCount <= 0) {
+			clearInterval(interval);
+			isSpinning = false;
+		}
+	}, 100);
+}
 
-	function adjustHeight(
-		event: Event & {
-			currentTarget: EventTarget & HTMLTextAreaElement;
-		},
-	) {
-		const textarea = event.currentTarget;
-		textarea.style.height = "auto";
-		textarea.style.height = textarea.scrollHeight + "px";
-	}
+function adjustHeight(
+	event: Event & {
+		currentTarget: EventTarget & HTMLTextAreaElement;
+	},
+) {
+	const textarea = event.currentTarget;
+	textarea.style.height = "auto";
+	textarea.style.height = `${textarea.scrollHeight}px`;
+}
 </script>
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
@@ -56,6 +56,7 @@
 				disabled={isSpinning}
 				class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 				onclick={startRoulette}
+				type="button"
 			>
 				スタート
 			</button>
@@ -68,13 +69,14 @@
 				{#if selectedItem && selectedItem.trim() !== ""}
 					<span class="text-6xl md:text-8xl">{selectedItem}</span>
 				{:else}
-					<span class="text-3xl text-slate-500 md:text-4xl">選ばれたのは……</span
+					<span class="text-3xl text-slate-500 md:text-4xl"
+						>選ばれたのは……</span
 					>
 				{/if}
 			</p>
 		</div>
 	</div>
-	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
+	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white">
 	<div class="col-span-full grid gap-y-2">
 		<h2 class="text-2xl font-bold">使い方</h2>
 		<ol class="list-decimal pl-6">

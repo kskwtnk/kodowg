@@ -47,6 +47,6 @@ We offer you nifty tools for those little tasks in life.
 - `pnpm build`: Builds the application for production.
 - `pnpm preview`: Previews the production build.
 - `pnpm test`: Runs the end-to-end tests.
-- `pnpm lint`: Checks for linting and formatting issues.
-- `pnpm format`: Automatically formats the code.
-- `pnpm check`: Runs static type-checking.
+- `pnpm check`: Checks linting and formatting with Biome.
+- `pnpm check:write`: Automatically fixes linting and formatting with Biome.
+- `pnpm svelte-check`: Runs static type-checking.

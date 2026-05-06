@@ -22,7 +22,8 @@
 		}
 	},
 	"files": {
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": ["**", "!.codex"]
 	},
 	"formatter": {
 		"enabled": true

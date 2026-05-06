@@ -1,51 +1,51 @@
 <script lang="ts">
-	let inputText = $state("");
-	let items: string[] = [];
-	let shuffledItems = $state<string[]>([]);
-	let isSpinning = $state(false);
+let inputText = $state("");
+let items: string[] = [];
+let shuffledItems = $state<string[]>([]);
+let isSpinning = $state(false);
 
-	function startShuffle() {
-		if (inputText.trim() === "") return;
+function startShuffle() {
+	if (inputText.trim() === "") return;
 
-		isSpinning = true;
-		items = inputText
-			.split("\n")
-			.map((line) => line.trim())
-			.filter((line) => line !== "");
+	isSpinning = true;
+	items = inputText
+		.split("\n")
+		.map((line) => line.trim())
+		.filter((line) => line !== "");
 
-		let spinCount = Math.floor(Math.random() * 10) + 20;
-		let tempArray = [...items];
+	let spinCount = Math.floor(Math.random() * 10) + 20;
+	let tempArray = [...items];
 
-		const interval = setInterval(() => {
-			for (let i = tempArray.length - 1; i > 0; i--) {
+	const interval = setInterval(() => {
+		for (let i = tempArray.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+		}
+		shuffledItems = [...tempArray];
+
+		spinCount--;
+		if (spinCount <= 0) {
+			clearInterval(interval);
+			const finalArray = [...items];
+			for (let i = finalArray.length - 1; i > 0; i--) {
 				const j = Math.floor(Math.random() * (i + 1));
-				[tempArray[i], tempArray[j]] = [tempArray[j], tempArray[i]];
+				[finalArray[i], finalArray[j]] = [finalArray[j], finalArray[i]];
 			}
-			shuffledItems = [...tempArray];
+			shuffledItems = finalArray;
+			isSpinning = false;
+		}
+	}, 100);
+}
 
-			spinCount--;
-			if (spinCount <= 0) {
-				clearInterval(interval);
-				const finalArray = [...items];
-				for (let i = finalArray.length - 1; i > 0; i--) {
-					const j = Math.floor(Math.random() * (i + 1));
-					[finalArray[i], finalArray[j]] = [finalArray[j], finalArray[i]];
-				}
-				shuffledItems = finalArray;
-				isSpinning = false;
-			}
-		}, 100);
-	}
-
-	function adjustHeight(
-		event: Event & {
-			currentTarget: EventTarget & HTMLTextAreaElement;
-		},
-	) {
-		const textarea = event.currentTarget;
-		textarea.style.height = "auto";
-		textarea.style.height = textarea.scrollHeight + "px";
-	}
+function adjustHeight(
+	event: Event & {
+		currentTarget: EventTarget & HTMLTextAreaElement;
+	},
+) {
+	const textarea = event.currentTarget;
+	textarea.style.height = "auto";
+	textarea.style.height = `${textarea.scrollHeight}px`;
+}
 </script>
 
 <div class="grid grid-cols-1 gap-x-4 gap-y-6 md:grid-cols-5 lg:gap-x-8">
@@ -66,6 +66,7 @@
 			disabled={isSpinning}
 			class="rounded-md bg-indigo-600 p-2 text-2xl font-bold text-white hover:bg-indigo-800 disabled:opacity-50"
 			onclick={startShuffle}
+			type="button"
 		>
 			シャッフル
 		</button>
@@ -86,7 +87,7 @@
 			{/if}
 		</div>
 	</div>
-	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white" />
+	<hr class="col-span-full mt-1.5 border-t-slate-200 border-b-white">
 	<div class="col-span-full grid gap-y-2">
 		<h2 class="text-2xl font-bold">使い方</h2>
 		<ol class="list-decimal pl-6">

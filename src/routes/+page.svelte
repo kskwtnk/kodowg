@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { resolve } from "$app/paths";
+import { resolve } from "$app/paths";
 
-	const tools = [
-		{ href: "/character-count", name: "文字数カウント" },
-		{ href: "/group-divider", name: "グループ分け" },
-		{ href: "/qr-code-generator", name: "QRコードジェネレーター" },
-		{ href: "/random-order", name: "ランダム並び替え" },
-		{ href: "/roulette", name: "ルーレット" },
-		{ href: "/timer", name: "タイマー" },
-	] as const;
+const tools = [
+	{ href: "/character-count", name: "文字数カウント" },
+	{ href: "/group-divider", name: "グループ分け" },
+	{ href: "/qr-code-generator", name: "QRコードジェネレーター" },
+	{ href: "/random-order", name: "ランダム並び替え" },
+	{ href: "/roulette", name: "ルーレット" },
+	{ href: "/timer", name: "タイマー" },
+] as const;
 </script>
 
 <div class="grid grid-cols-1 gap-y-9">
@@ -50,9 +50,9 @@
 </div>
 
 <style lang="postcss">
-	@reference "tailwindcss";
+@reference "tailwindcss";
 
-	[data-grid] {
-		grid-template-columns: repeat(auto-fit, minmax(--spacing(80), 1fr));
-	}
+[data-grid] {
+	grid-template-columns: repeat(auto-fit, minmax(--spacing(80), 1fr));
+}
 </style>

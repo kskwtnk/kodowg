@@ -1,0 +1,16 @@
+{
+	"hooks": {
+		"Stop": [
+			{
+				"hooks": [
+					{
+						"command": "/bin/sh -c 'pnpm check:write >&2 && printf '\\''{\"continue\":true}\\n'\\'' || { printf '\\''Biome check failed. Run pnpm check:write manually and fix the output.\\n'\\'' >&2; exit 2; }'",
+						"statusMessage": "Running Biome check",
+						"timeout": 180,
+						"type": "command"
+					}
+				]
+			}
+		]
+	}
+}
